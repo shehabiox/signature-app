@@ -798,6 +798,12 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
               loading="eager"
               fetchPriority="high"
               decoding="async"
+              onError={(e) => {
+                if (!e.target.dataset.triedFallback) {
+                  e.target.dataset.triedFallback = 'true';
+                  e.target.src = decodeURIComponent(activeImage);
+                }
+              }}
               className="w-full h-full object-cover"
             />
             {images.length > 1 && !product.colors && (
@@ -983,6 +989,13 @@ const ProductItem = ({ product, addToCart, onQuickView, index }) => {
           decoding="async"
           width="320"
           height="400"
+          onError={(e) => {
+            console.error('Failed to load image:', activeImage);
+            if (!e.target.dataset.triedFallback) {
+              e.target.dataset.triedFallback = 'true';
+              e.target.src = decodeURIComponent(activeImage);
+            }
+          }}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 bg-[#1a1a1a]"
         />
 
@@ -1099,7 +1112,7 @@ const ShopByCollection = ({ selectedBrand, addToCart, onQuickView }) => {
       }
 
       try {
-        const res = await fetch('/products.json');
+        const res = await fetch(`/products.json?v=${Date.now()}`);
         const allProducts = await res.json();
 
         let brandKey = selectedBrand.name;
