@@ -1427,8 +1427,21 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       currency: "LE"
     },
     {
+      name: "HERMÈS - Hermes Paris Silk Tie (Navy)",
+      tieImage: "/products/HERMES/07-navy-blue-hermes-paris-tie-2/hermes-navy-tie.jpg",
+      matchingLooks: [
+        { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
+        { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
+        { label: "Hermès Navy Look 3", image: "/matching/hermes-orange-3.jpg" },
+        { label: "Hermès Navy Look 4", image: "/matching/hermes-orange-4.jpg" }
+      ],
+      title: "HERMÈS - Hermes Paris Silk Tie (Navy)",
+      price: "1400.00",
+      currency: "LE"
+    },
+    {
       name: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
-      tieImage: "/products/HERMES/07-navy-blue-hermes-paris-tie-2/Hermes Paris Navy Blue.jpg",
+      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/hermes-navy-blue-tie.jpg",
       matchingLooks: [
         { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
         { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
@@ -1436,19 +1449,6 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
         { label: "Hermès Navy Look 4", image: "/matching/hermes-orange-4.jpg" }
       ],
       title: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
-      price: "1300.00",
-      currency: "LE"
-    },
-    {
-      name: "HERMÈS - Hermes Paris Silk Tie (Navy Blue) (2)",
-      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/Hermes Paris Navy Blue.jpg",
-      matchingLooks: [
-        { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
-        { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
-        { label: "Hermès Navy Look 3", image: "/matching/hermes-orange-3.jpg" },
-        { label: "Hermès Navy Look 4", image: "/matching/hermes-orange-4.jpg" }
-      ],
-      title: "HERMÈS - Hermes Paris Silk Tie (Navy Blue) (2)",
       price: "1300.00",
       currency: "LE"
     },
@@ -1653,7 +1653,20 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
                   }`}
                 >
                   <div className="aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-black/50 border border-white/10">
-                    <img src={tie.tieImage} alt={tie.name} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img
+                      src={tie.tieImage}
+                      alt={tie.name}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      onError={(e) => {
+                        if (!e.target.dataset.triedFallback) {
+                          e.target.dataset.triedFallback = 'true';
+                          e.target.src = decodeURIComponent(tie.tieImage);
+                        }
+                      }}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                   <h4 className="text-xs text-white font-light tracking-wide truncate group-hover:text-[#C5A880] transition-colors">{tie.name}</h4>
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5">
