@@ -1256,9 +1256,11 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
   const [selectedTieIndex, setSelectedTieIndex] = useState(0);
   const [activeMatchingIndex, setActiveMatchingIndex] = useState(0);
 
-  // Preload all matching suit images for instant rendering on mobile & desktop
+  // Preload all matching suit images and tie images for instant rendering on mobile & desktop
   useEffect(() => {
     matchingTies.forEach(tie => {
+      const tieImg = new Image();
+      tieImg.src = tie.tieImage;
       tie.matchingLooks.forEach(look => {
         const img = new Image();
         img.src = look.image;
