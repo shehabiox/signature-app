@@ -791,13 +791,13 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
 
           {/* Image gallery side */}
           <div className="relative aspect-[4/5] bg-black/40 flex items-center justify-center overflow-hidden">
-            <motion.img
+            <img
               key={activeImage}
               src={activeImage}
               alt={product.title}
-              initial={{ opacity: 0.8 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover"
             />
             {images.length > 1 && !product.colors && (
@@ -1587,26 +1587,32 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       {/* Popup Modal for Choosing a Tie */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 md:p-8 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-3 md:p-8"
           onClick={() => setModalOpen(false)}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#111111] border border-white/15 rounded-2xl max-w-5xl w-full my-auto max-h-[90vh] overflow-y-auto p-4 md:p-8 shadow-2xl relative"
+            className="bg-[#0e0e0e] border border-[#C5A880]/30 rounded-3xl max-w-5xl w-full max-h-[85vh] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.9)] relative overflow-hidden transform-gpu"
           >
-            <div className="flex justify-between items-center pb-4 md:pb-6 border-b border-white/10 mb-4 md:mb-6 sticky top-0 bg-[#111111] z-30 shadow-md px-2 pt-2">
-              <h3 className="text-xs sm:text-base md:text-xl text-white tracking-wider md:tracking-widest pr-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                CHOOSE A TIE ({matchingTies.length} TIES)
-              </h3>
+            <div className="flex justify-between items-center px-6 py-5 border-b border-white/10 bg-[#121212] flex-shrink-0">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-[#C5A880] mb-1 font-medium">CURATED SELECTION</p>
+                <h3 className="text-xl md:text-2xl text-white tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  CHOOSE A TIE <span className="text-[#C5A880] text-sm">({matchingTies.length} Masterpieces)</span>
+                </h3>
+              </div>
               <button
                 onClick={() => setModalOpen(false)}
-                className="text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-2 md:p-2.5 rounded-full transition flex-shrink-0"
+                className="text-white/70 hover:text-white bg-white/5 hover:bg-white/15 p-2.5 rounded-full transition border border-white/10 flex-shrink-0"
               >
-                ✕
+                <X size={20} />
               </button>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4 pb-4">
+            <div
+              className="p-6 md:p-8 overflow-y-auto flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 scrollbar-thin scrollbar-thumb-[#C5A880]/40 scrollbar-track-transparent will-change-transform"
+              style={{ WebkitOverflowScrolling: 'touch', transform: 'translate3d(0,0,0)' }}
+            >
               {matchingTies.map((tie, idx) => (
                 <div
                   key={idx}
@@ -1614,14 +1620,18 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
                     setSelectedTieIndex(idx);
                     setModalOpen(false);
                   }}
-                  className={`bg-white/5 border rounded-xl p-3 cursor-pointer transition-colors ${
-                    selectedTieIndex === idx ? 'border-[#C5A880] bg-white/10' : 'border-white/10 hover:border-white/30'
+                  className={`group bg-[#161616] border rounded-2xl p-3.5 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-[#C5A880] hover:shadow-[0_10px_30px_rgba(197,168,128,0.15)] ${
+                    selectedTieIndex === idx ? 'border-[#C5A880] bg-[#1a1a1a] ring-2 ring-[#C5A880]/50 shadow-lg' : 'border-white/10'
                   }`}
                 >
-                  <div className="aspect-[3/4] rounded overflow-hidden mb-3 bg-black/40">
-                    <img src={tie.tieImage} alt={tie.name} loading="eager" fetchPriority="high" className="w-full h-full object-cover" />
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-black/50 border border-white/10">
+                    <img src={tie.tieImage} alt={tie.name} loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
-                  <h4 className="text-xs text-white font-light tracking-wide truncate">{tie.name}</h4>
+                  <h4 className="text-xs text-white font-light tracking-wide truncate group-hover:text-[#C5A880] transition-colors">{tie.name}</h4>
+                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5">
+                    <span className="text-[10px] text-[#C5A880] tracking-wider uppercase font-medium">Select Tie</span>
+                    <span className="text-[11px] text-white font-semibold">{tie.currency} {tie.price}</span>
+                  </div>
                 </div>
               ))}
             </div>
