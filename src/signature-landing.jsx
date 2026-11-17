@@ -1436,7 +1436,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "HERMÈS - Colourful Jump Silk Tie (Orange)",
       tieImage: "/products/HERMES/01-orange-colourful-jump-silk-tie/Orange%20Colourful%20Jump%20Silk%20Tie.jpg",
-      thumbImage: "/matching-thumbs/tie-thumb-13.webp",
+      thumbImage: "/matching-thumbs/hermes-orange-jump.webp",
       matchingLooks: [
         { label: "Hermès Orange Look 1", image: "/matching/hermes-orange-1.jpg" },
         { label: "Hermès Orange Look 2", image: "/matching/hermes-orange-2.jpg" },
