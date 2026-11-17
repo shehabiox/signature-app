@@ -1269,15 +1269,11 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
   const [selectedTieIndex, setSelectedTieIndex] = useState(0);
   const [activeMatchingIndex, setActiveMatchingIndex] = useState(0);
 
-  // Preload all matching suit images and tie images for instant rendering on mobile & desktop
+  // Preload thumbs for instant rendering in modal
   useEffect(() => {
     matchingTies.forEach(tie => {
-      const tieImg = new Image();
-      tieImg.src = tie.tieImage;
-      tie.matchingLooks.forEach(look => {
-        const img = new Image();
-        img.src = look.image;
-      });
+      const thumb = new Image();
+      thumb.src = tie.thumbImage || tie.tieImage;
     });
   }, []);
 
@@ -1290,6 +1286,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "DIOR - Striped CD Icon Silk Tie",
       tieImage: "/products/DIOR/01-striped-cd-icon-silk-tie/DIOR%20-%20STRIPED%20CD%20ICON%20SILK%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-1.webp",
       matchingLooks: [
         { label: "Charcoal Suit", image: "/matching/8b571844-2e70-49aa-8228-e7d0679616af.jpg" },
         { label: "Navy Tailored", image: "/matching/74dab8e0-0109-4480-a7dc-2755d9107bd0.jpg" },
@@ -1302,6 +1299,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "GUCCI - Navy and Green GG Silk Jacquard",
       tieImage: "/products/GUCCI/01-navy-green-gg-silk-jacquard-tie/GUCCI%20-%20Navy%20and%20Green%20GG%20SILKJACQUARD%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-2.webp",
       matchingLooks: [
         { label: "Navy Tailored", image: "/matching/e475c486-ddd4-4f46-923a-4d664a5b45b3.jpg" },
         { label: "Forest Green", image: "/matching/814b03c4-9503-4f33-9a3b-2d0b73021f56.jpg" },
@@ -1314,6 +1312,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "GUCCI - Navy Bee Stripped Silk Tie",
       tieImage: "/products/GUCCI/18-navy-bee-stripped-silk-tie/GUCCI%20-%20Navy%20BEE%20STRIPPED%20SILK%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-3.webp",
       matchingLooks: [
         { label: "Atelier View 1", image: "/matching/gucci-navy-bee-1.jpg" },
         { label: "Atelier View 2", image: "/matching/gucci-navy-bee-2.jpg" },
@@ -1327,6 +1326,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "GUCCI - Black GG Jacquard Pattern",
       tieImage: "/products/GUCCI/03-black-gg-jacquard-pattern/GUCCI%20-%20Black%20GG%20JACQUARD%20PATTERN.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-4.webp",
       matchingLooks: [
         { label: "Black Look 1", image: "/matching/gucci-black-gg-1.jpg" },
         { label: "Black Look 2", image: "/matching/gucci-black-gg-2.jpg" },
@@ -1340,6 +1340,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "GUCCI - Dark Red GG Pattern Check Silk",
       tieImage: "/products/GUCCI/06-dark-red-gg-pattern-check-silk/GUCCI%20-%20Dark%20Red%20GG%20PATTERN%20CHECK%20SILK.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-5.webp",
       matchingLooks: [
         { label: "Burgundy Accent", image: "/matching/bc650dc0-9722-406b-82da-4554df6d6611.jpg" },
         { label: "Charcoal Suit", image: "/matching/83156078-4e16-44ca-8ee4-a4c9df0513ff.jpg" },
@@ -1352,6 +1353,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "BURBERRY - BT Lined Silk Tie",
       tieImage: "/products/BURBERRY/01-bt-lined-silk-tie/BURBERRY%20-%20BT%20LINED%20SILK%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-6.webp",
       matchingLooks: [
         { label: "Burberry Look 1", image: "/matching/burberry-1.jpg" },
         { label: "Burberry Look 2", image: "/matching/burberry-2.jpg" },
@@ -1365,6 +1367,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "Salvatore Ferragamo Silk Tie",
       tieImage: "/products/Salvatore%20Ferragamo/01-aqua-green-small-pattern-silk-tie/Ferragamo%20-%20Aqua%20Green%20small%20pattern%20Silk%20Tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-7.webp",
       matchingLooks: [
         { label: "Teal Accent", image: "/matching/Sophisticated%20Teal%20Tie%20Portrait.png" },
         { label: "Aqua Formal", image: "/matching/Confident%20Teal-Tie%20Portrait.png" },
@@ -1377,6 +1380,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "Givenchy - Maroon Solid Classic Silk Tie",
       tieImage: "/products/GIVENCHY/01-maroon-solid-classic-silk-tie/Givenchy%20-%20Maroon%20Solid%20Classic%20Silk%20Tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-8.webp",
       matchingLooks: [
         { label: "Maroon Silk", image: "/matching/7e3773eb-8070-4f97-9803-b37a2720f3e1.jpg" },
         { label: "Evening Suit", image: "/matching/5f593cb6-4ec4-4ab5-b84e-d02ba0c0f980.jpg" },
@@ -1390,6 +1394,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "CHANEL Blue CC Pattern Silk Tie",
       tieImage: "/products/CHANEL/01-blue-cc-pattern-silk-tie/CHANEL%20Blue%20CC%20pattern%20silk%20tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-9.webp",
       matchingLooks: [
         { label: "Chanel Look 1", image: "/matching/chanel-1.jpg" },
         { label: "Chanel Look 2", image: "/matching/chanel-2.jpg" },
@@ -1403,6 +1408,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "Black Classic L.V Silk Tie",
       tieImage: "/products/LOUIS%20VUITTON/01-black-classic-lv-silk-tie/Black%20CLASSIC%20L.V%20SILK%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-10.webp",
       matchingLooks: [
         { label: "LV Look 1", image: "/matching/louis-vuitton-1.jpg" },
         { label: "LV Look 2", image: "/matching/louis-vuitton-2.jpg" },
@@ -1416,6 +1422,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "LOUIS VUITTON - Blue ECU Silk Tie",
       tieImage: "/products/LOUIS%20VUITTON/02-blue-ecu-silk-tie/LOUIS%20VUITTON%20-%20Blue%20ECU%20SILK%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-11.webp",
       matchingLooks: [
         { label: "LV Ecu Look 1", image: "/matching/louis-vuitton-ecu-1.jpg" },
         { label: "LV Ecu Look 2", image: "/matching/louis-vuitton-ecu-2.jpg" },
@@ -1429,6 +1436,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "HERMÈS - Hermes Paris Silk Tie (Navy)",
       tieImage: "/products/HERMES/07-navy-blue-hermes-paris-tie-2/hermes-navy-tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-12.webp",
       matchingLooks: [
         { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
         { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
@@ -1442,6 +1450,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
       tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/hermes-navy-blue-tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-13.webp",
       matchingLooks: [
         { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
         { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
@@ -1455,6 +1464,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "HERMES - Olive Petits Maillons Silk Tie",
       tieImage: "/products/HERMES/05-olive-petits-maillons-silk-tie/HERMES%20-%20Olive%20PETITS%20MAILLONS%20SILK%20TIE.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-14.webp",
       matchingLooks: [
         { label: "Hermès Olive Look 1", image: "/matching/hermes-olive-1.jpg" },
         { label: "Hermès Olive Look 2", image: "/matching/hermes-olive-2.jpg" },
@@ -1468,6 +1478,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "HERMES Tie SE",
       tieImage: "/products/HERMES/06-red-h-scintillant-silk-tie/Hermes%20-%20Red%20H%20scintillant%20silk%20tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-15.webp",
       matchingLooks: [
         { label: "Hermès Red Look 1", image: "/matching/hermes-red-h-1.jpg" },
         { label: "Hermès Red Look 2", image: "/matching/hermes-red-h-2.jpg" },
@@ -1481,6 +1492,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     {
       name: "Gucci - Purple Dark With GG Pattern Silk Tie",
       tieImage: "/products/GUCCI/10-purple-dark-gg-pattern-silk-tie/Gucci%20-%20Purple%20Dark%20With%20GG%20Pattern%20Silk%20Tie.jpg",
+      thumbImage: "/matching-thumbs/tie-thumb-16.webp",
       matchingLooks: [
         { label: "Gucci Purple Look 1", image: "/matching/gucci-purple-1.jpg" },
         { label: "Gucci Purple Look 2", image: "/matching/gucci-purple-2.jpg" },
@@ -1615,12 +1627,12 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       {/* Popup Modal for Choosing a Tie */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-3 md:p-8"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-3 md:p-8"
           onClick={() => setModalOpen(false)}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#0e0e0e] border border-[#C5A880]/30 rounded-3xl max-w-5xl w-full max-h-[85vh] flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.9)] relative overflow-hidden transform-gpu"
+            className="bg-[#0e0e0e] border border-[#C5A880]/30 rounded-3xl max-w-5xl w-full max-h-[85vh] flex flex-col shadow-2xl relative overflow-hidden"
           >
             <div className="flex justify-between items-center px-6 py-5 border-b border-white/10 bg-[#121212] flex-shrink-0">
               <div>
@@ -1638,8 +1650,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
             </div>
 
             <div
-              className="p-6 md:p-8 overflow-y-auto flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 scrollbar-thin scrollbar-thumb-[#C5A880]/40 scrollbar-track-transparent will-change-transform"
-              style={{ WebkitOverflowScrolling: 'touch', transform: 'translate3d(0,0,0)' }}
+              className="p-6 md:p-8 overflow-y-auto flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 scrollbar-thin scrollbar-thumb-[#C5A880]/40 scrollbar-track-transparent"
             >
               {matchingTies.map((tie, idx) => (
                 <div
@@ -1648,24 +1659,25 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
                     setSelectedTieIndex(idx);
                     setModalOpen(false);
                   }}
-                  className={`group bg-[#161616] border rounded-2xl p-3.5 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-[#C5A880] hover:shadow-[0_10px_30px_rgba(197,168,128,0.15)] ${
+                  className={`group bg-[#161616] border rounded-2xl p-3.5 cursor-pointer transition-colors duration-200 hover:border-[#C5A880] ${
                     selectedTieIndex === idx ? 'border-[#C5A880] bg-[#1a1a1a] ring-2 ring-[#C5A880]/50 shadow-lg' : 'border-white/10'
                   }`}
                 >
-                  <div className="aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-black/50 border border-white/10">
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-[#111111] border border-white/10">
                     <img
-                      src={tie.tieImage}
+                      src={tie.thumbImage || tie.tieImage}
                       alt={tie.name}
                       loading="eager"
-                      fetchPriority="high"
                       decoding="async"
+                      width="200"
+                      height="266"
                       onError={(e) => {
                         if (!e.target.dataset.triedFallback) {
                           e.target.dataset.triedFallback = 'true';
-                          e.target.src = decodeURIComponent(tie.tieImage);
+                          e.target.src = tie.tieImage;
                         }
                       }}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
                   <h4 className="text-xs text-white font-light tracking-wide truncate group-hover:text-[#C5A880] transition-colors">{tie.name}</h4>
