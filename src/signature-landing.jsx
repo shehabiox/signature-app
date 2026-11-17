@@ -1314,10 +1314,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/GUCCI/18-navy-bee-stripped-silk-tie/GUCCI%20-%20Navy%20BEE%20STRIPPED%20SILK%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-3.webp",
       matchingLooks: [
-        { label: "Atelier View 1", image: "/matching/gucci-navy-bee-1.jpg" },
-        { label: "Atelier View 2", image: "/matching/gucci-navy-bee-2.jpg" },
-        { label: "Atelier View 3", image: "/matching/gucci-navy-bee-3.jpg" },
-        { label: "Atelier View 4", image: "/matching/gucci-navy-bee-4.jpg" }
+        { label: "Charcoal Suit", image: "/matching/gucci-navy-bee-1.jpg" },
+        { label: "Classic Black", image: "/matching/gucci-navy-bee-2.jpg" },
+        { label: "Midnight Navy", image: "/matching/gucci-navy-bee-3.jpg" },
+        { label: "Light Grey", image: "/matching/gucci-navy-bee-4.jpg" }
       ],
       title: "GUCCI - Navy Bee Stripped Silk Tie",
       price: "1400.00",
