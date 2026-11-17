@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const baseDesktopMatching = 'C:\\Users\\Elmasrypc\\Desktop\\matching';
-const destDir = 'C:\\Users\\Elmasrypc\\signature-app\\public\\matching';
-const distDestDir = 'C:\\Users\\Elmasrypc\\signature-app\\dist\\matching';
+const destDir = path.join(__dirname, 'public', 'matching');
+const distDestDir = path.join(__dirname, 'dist', 'matching');
 
 if (!fs.existsSync(destDir)) {
   fs.mkdirSync(destDir, { recursive: true });
@@ -50,7 +50,6 @@ if (fs.existsSync(baseDesktopMatching)) {
           const destPath = path.join(destDir, cleanName);
           try {
             fs.copyFileSync(srcPath, destPath);
-            console.log(`Copied & renamed ${file} -> ${cleanName}`);
           } catch (e) {}
 
           if (fs.existsSync(distDestDir)) {
