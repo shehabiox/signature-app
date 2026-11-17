@@ -1415,7 +1415,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     },
     {
       name: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
-      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/Herm%C3%A8s%20Paris%20Navy%20Blue.jpg",
+      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/Hermès Paris Navy Blue.jpg",
       matchingLooks: [
         { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
         { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
@@ -1423,6 +1423,19 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
         { label: "Hermès Navy Look 4", image: "/matching/hermes-orange-4.jpg" }
       ],
       title: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
+      price: "1300.00",
+      currency: "LE"
+    },
+    {
+      name: "HERMÈS - Hermes Paris Silk Tie (Navy Blue) (2)",
+      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/Hermès Paris Navy Blue (2).jpg",
+      matchingLooks: [
+        { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
+        { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
+        { label: "Hermès Navy Look 3", image: "/matching/hermes-orange-3.jpg" },
+        { label: "Hermès Navy Look 4", image: "/matching/hermes-orange-4.jpg" }
+      ],
+      title: "HERMÈS - Hermes Paris Silk Tie (Navy Blue) (2)",
       price: "1300.00",
       currency: "LE"
     },
