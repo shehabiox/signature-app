@@ -978,8 +978,8 @@ const ProductItem = ({ product, addToCart, onQuickView, index }) => {
           key={activeImage}
           src={activeImage}
           alt={product.title}
-          loading={index < 4 ? "eager" : "lazy"}
-          fetchPriority={index < 4 ? "high" : "auto"}
+          loading="eager"
+          fetchPriority="high"
           decoding="async"
           width="320"
           height="400"
