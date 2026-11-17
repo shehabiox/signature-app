@@ -1415,7 +1415,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     },
     {
       name: "HERMÈS - Hermes Paris Silk Tie (Navy)",
-      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/Hermès Paris Navy Blue.jpg",
+      tieImage: "/products/HERMES/07-navy-blue-hermes-paris-tie-2/Hermès Paris Navy Blue.jpg",
       matchingLooks: [
         { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
         { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
