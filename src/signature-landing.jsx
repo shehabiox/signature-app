@@ -1310,7 +1310,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       currency: "LE"
     },
     {
-      name: "GUCCI - Navy Bee Stripped Silk Tie",
+      name: "GUCCI - Bee Stripped Silk Tie (Navy and Blue)",
       tieImage: "/products/GUCCI/18-navy-bee-stripped-silk-tie/GUCCI%20-%20Navy%20BEE%20STRIPPED%20SILK%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-3.webp",
       matchingLooks: [
@@ -1319,7 +1319,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
         { label: "Midnight Navy", image: "/matching/gucci-navy-bee-3.jpg" },
         { label: "Light Grey", image: "/matching/gucci-navy-bee-4.jpg" }
       ],
-      title: "GUCCI - Navy Bee Stripped Silk Tie",
+      title: "GUCCI - Bee Stripped Silk Tie (Navy and Blue)",
       price: "1400.00",
       currency: "LE"
     },
