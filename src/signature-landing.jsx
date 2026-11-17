@@ -7,7 +7,7 @@ import './index.css';
 const BRANDS = [
   { name: 'GUCCI', folder: 'GUCCI_!', count: 20, logo: '/brands/gucci.webp' },
   { name: 'DIOR', folder: 'DIOR_!', count: 7, logo: '/brands/dior.png' },
-  { name: 'HERMÈS', folder: 'HERMES_!', count: 7, logo: '/brands/hermes.webp' },
+  { name: 'HERMÈS', folder: 'HERMES_!', count: 8, logo: '/brands/hermes.webp' },
   { name: 'BURBERRY', folder: 'BURBERRY_!', count: 5, logo: '/brands/burberry.png' },
   { name: 'LOUIS VUITTON', folder: 'LOUIS VUITTON_!', count: 5, logo: '/brands/louis_vuitton.webp' },
   { name: 'CHANEL', folder: 'CHANEL_!', count: 1, logo: '/brands/chanel.png' },
@@ -1177,7 +1177,7 @@ const ShopByCollection = ({ selectedBrand, addToCart, onQuickView }) => {
             className="text-4xl md:text-5xl text-white mb-4 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
           >
-            {selectedBrand.name} TIES ({selectedBrand.count})
+            {selectedBrand.name} TIES ({products.length > 0 ? products.length : selectedBrand.count})
           </h2>
           <p className="text-white/50 text-sm tracking-wide">Handcrafted jacquard silk with immaculate finish</p>
         </div>
