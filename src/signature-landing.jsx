@@ -1434,17 +1434,17 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       currency: "LE"
     },
     {
-      name: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
-      tieImage: "/products/HERMES/02-navy-blue-hermes-paris-tie/hermes-navy-blue-tie.jpg",
+      name: "HERMÈS - Colourful Jump Silk Tie (Orange)",
+      tieImage: "/products/HERMES/01-orange-colourful-jump-silk-tie/Orange%20Colourful%20Jump%20Silk%20Tie.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-13.webp",
       matchingLooks: [
-        { label: "Hermès Navy Look 1", image: "/matching/hermes-orange-1.jpg" },
-        { label: "Hermès Navy Look 2", image: "/matching/hermes-orange-2.jpg" },
-        { label: "Hermès Navy Look 3", image: "/matching/hermes-orange-3.jpg" },
-        { label: "Hermès Navy Look 4", image: "/matching/hermes-orange-4.jpg" }
+        { label: "Hermès Orange Look 1", image: "/matching/hermes-orange-1.jpg" },
+        { label: "Hermès Orange Look 2", image: "/matching/hermes-orange-2.jpg" },
+        { label: "Hermès Orange Look 3", image: "/matching/hermes-orange-3.jpg" },
+        { label: "Hermès Orange Look 4", image: "/matching/hermes-orange-4.jpg" }
       ],
-      title: "HERMÈS - Hermes Paris Silk Tie (Navy Blue)",
-      price: "1300.00",
+      title: "HERMÈS - Colourful Jump Silk Tie (Orange)",
+      price: "1400.00",
       currency: "LE"
     },
     {
