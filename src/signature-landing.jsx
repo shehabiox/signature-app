@@ -2647,23 +2647,23 @@ export default function SignatureLanding() {
         onShopClick={() => document.getElementById('brands')?.scrollIntoView({ behavior: 'smooth' })}
         onOpenAllProducts={() => setAllProductsModalOpen(true)}
       />
-      <CraftsmanshipBanner />
-      <BrandFilterSection selectedBrand={selectedBrand} onBrandSelect={handleBrandSelect} />
-      <ShopByCollection selectedBrand={selectedBrand} addToCart={addToCart} onQuickView={setQuickViewProduct} />
-      <div className="bg-gradient-to-r from-[#0d0d0d] via-[#161616] to-[#0d0d0d] py-16 px-6 text-center border-y border-[#C5A880]/30 my-6">
+      <div className="bg-gradient-to-r from-[#0d0d0d] via-[#161616] to-[#0d0d0d] py-14 px-6 text-center border-y border-[#C5A880]/30">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs uppercase tracking-[0.4em] text-[#C5A880] mb-2 font-medium">BESPOKE WARDROBE HARMONY</p>
-          <h3 className="text-3xl md:text-4xl text-white font-light tracking-wide mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h3 className="text-2xl md:text-3xl text-white font-light tracking-wide mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Unsure Which Tie Matches Your Suit?
           </h3>
           <a
             href="#find-tie"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#C5A880] text-black text-xs font-semibold tracking-[0.25em] uppercase hover:bg-[#b3976f] transition-all shadow-[0_0_30px_rgba(197,168,128,0.3)]"
+            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#C5A880] text-black text-xs font-semibold tracking-[0.25em] uppercase hover:bg-[#b3976f] transition-all shadow-[0_0_30px_rgba(197,168,128,0.3)]"
           >
             <span>✨ Find Your Perfect Tie</span>
           </a>
         </div>
       </div>
+      <CraftsmanshipBanner />
+      <BrandFilterSection selectedBrand={selectedBrand} onBrandSelect={handleBrandSelect} />
+      <ShopByCollection selectedBrand={selectedBrand} addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <FindYourPerfectTie addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <PressSection />
       <FaqSection />
