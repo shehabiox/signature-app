@@ -1943,6 +1943,8 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
     </AnimatePresence>
   );
 };
+
+const SearchModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -1955,27 +1957,16 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
     setLoading(true);
     const timer = setTimeout(async () => {
       try {
-        const allProducts = [];
-        for (const brand of BRANDS) {
-          const res = await fetch(`/products/${brand.folder}/metadata.json`);
-          if (res.ok) {
-            const data = await res.json();
-            if (Array.isArray(data)) {
-              allProducts.push(...data.map(p => ({ ...p, brand: brand.name })));
-            }
-          }
-        }
+        const res = await fetch(`/products.json?v=${Date.now()}`);
+        const allProducts = await res.json();
         const filtered = allProducts.filter(p =>
           p.title.toLowerCase().includes(query.toLowerCase()) ||
-          p.brand.toLowerCase().includes(query.toLowerCase())
+          (p.brand && p.brand.toLowerCase().includes(query.toLowerCase()))
         );
         setResults(filtered);
       } catch (e) {
-        setResults([
-          { id: 'S-1', title: 'Gucci Diamond Weave Silk Tie', brand: 'GUCCI', price: '949.00', currency: 'LE', image: '/products/GUCCI_!/DSC05686.jpg' },
-          { id: 'S-2', title: 'Hermès Signature Printed Silk Tie', brand: 'HERMÈS', price: '999.00', currency: 'LE', image: '/products/HERMES_!/DSC06080.jpg' },
-          { id: 'S-3', title: 'Dior Sapphire Jacquard Silk Tie', brand: 'DIOR', price: '949.00', currency: 'LE', image: '/products/DIOR_!/DSC05748.jpg' }
-        ].filter(p => p.title.toLowerCase().includes(query.toLowerCase()) || p.brand.toLowerCase().includes(query.toLowerCase())));
+        console.error('Search error:', e);
+        setResults([]);
       } finally {
         setLoading(false);
       }
@@ -2374,6 +2365,7 @@ export default function SignatureLanding() {
   const [toastMessage, setToastMessage] = useState('');
   const [selectedBrand, setSelectedBrand] = useState(BRANDS[0]);
   const [allProductsModalOpen, setAllProductsModalOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState(null);
 
   const handleNavigate = (item) => {
     if (item === 'Home') {
