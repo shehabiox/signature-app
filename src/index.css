@@ -5,6 +5,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -16,14 +17,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 img {
   content-visibility: auto;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input, select, textarea {
+  font-size: 16px !important;
 }
 
 *, *::before, *::after {
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 .scrollbar-none::-webkit-scrollbar {

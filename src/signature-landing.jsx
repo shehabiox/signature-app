@@ -2097,7 +2097,7 @@ const FloatingContactWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -2306,7 +2306,7 @@ const CookieConsentBanner = ({ onAccept }) => {
   if (accepted) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d0d] border-t border-[#C5A880]/30 p-4 md:px-8 flex flex-col items-center justify-center text-center gap-3 shadow-2xl">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d0d] border-t border-[#C5A880]/30 p-4 md:px-8 flex flex-col items-center justify-center text-center gap-3 shadow-2xl" style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
       <p className="text-xs text-white/80 font-light max-w-2xl">
         We use cookies to ensure you get the finest luxury browsing experience and secure checkout encryption. <span className="text-[#C5A880]">Privacy Policy</span>
       </p>
