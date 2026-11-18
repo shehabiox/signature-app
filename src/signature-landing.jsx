@@ -745,6 +745,7 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
   const [hasBox, setHasBox] = useState(false); // No Box as default
+  const [zoomModalOpen, setZoomModalOpen] = useState(false);
 
   if (!isOpen || !product) return null;
 
@@ -798,7 +799,10 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
           </button>
 
           {/* Image gallery side */}
-          <div className="relative aspect-[4/5] bg-black/40 flex items-center justify-center overflow-hidden">
+          <div
+            className="relative aspect-[4/5] bg-black/40 flex items-center justify-center overflow-hidden cursor-zoom-in group/img"
+            onClick={() => setZoomModalOpen(true)}
+          >
             <img
               key={activeImage}
               src={activeImage}
@@ -812,10 +816,13 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
                   e.target.src = decodeURIComponent(activeImage);
                 }
               }}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105"
             />
+            <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-[#C5A880] uppercase tracking-widest border border-white/20 opacity-80 group-hover/img:opacity-100 transition flex items-center gap-1.5 z-20 pointer-events-none">
+              <span>🔍 Click to Zoom</span>
+            </div>
             {images.length > 1 && !product.colors && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md" onClick={(e) => e.stopPropagation()}>
                 {images.map((img, idx) => (
                   <button
                     key={idx}
@@ -828,6 +835,36 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
               </div>
             )}
           </div>
+
+          {/* Fullscreen Zoom Lightbox Modal */}
+          {zoomModalOpen && (
+            <div
+              className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 cursor-zoom-out"
+              onClick={() => setZoomModalOpen(false)}
+            >
+              <button
+                onClick={() => setZoomModalOpen(false)}
+                className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition z-50"
+              >
+                <X size={24} />
+              </button>
+              <div className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center overflow-auto" onClick={(e) => e.stopPropagation()}>
+                <img
+                  src={activeImage}
+                  alt={product.title}
+                  className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl cursor-grab active:cursor-grabbing"
+                  style={{ transform: 'scale(1.5)', transition: 'transform 0.3s ease' }}
+                  onClick={(e) => {
+                    const currentScale = e.currentTarget.style.transform;
+                    e.currentTarget.style.transform = currentScale.includes('1.5') ? 'scale(2.5)' : 'scale(1.5)';
+                  }}
+                />
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/80 px-4 py-2 rounded-full border border-white/20 text-[11px] text-[#C5A880] tracking-widest uppercase backdrop-blur-md pointer-events-none">
+                  Click image to toggle zoom • Inspect silk jacquard weave
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Product details side */}
           <div className="p-8 md:p-10 flex flex-col justify-between">
