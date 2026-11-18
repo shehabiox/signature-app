@@ -1535,7 +1535,9 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
     }
   ];
 
-  const currentTie = matchingTies[selectedTieIndex];
+  const currentTie = matchingTies[selectedTieIndex] || matchingTies[0];
+  const safeMatchingIndex = Math.min(activeMatchingIndex, (currentTie.matchingLooks?.length || 1) - 1);
+  const currentLook = currentTie.matchingLooks?.[safeMatchingIndex] || currentTie.matchingLooks?.[0] || { label: 'Look', image: currentTie.tieImage };
 
   return (
     <section className="relative py-28 px-6 bg-[#070707] border-t border-b border-white/10 overflow-hidden text-center">
@@ -1573,15 +1575,15 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
               <div className="flex justify-between items-center mb-4">
                 <h4 className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-medium">Matching Suit Combination</h4>
                 <span className="text-[10px] text-white/55 tracking-widest uppercase">
-                  {currentTie.matchingLooks[activeMatchingIndex].label}
+                  {currentLook.label}
                 </span>
               </div>
 
               <div className="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-black/40 border border-white/10 shadow-lg">
                 <img
-                  key={currentTie.matchingLooks[activeMatchingIndex].image}
-                  src={currentTie.matchingLooks[activeMatchingIndex].image}
-                  alt={currentTie.matchingLooks[activeMatchingIndex].label}
+                  key={currentLook.image}
+                  src={currentLook.image}
+                  alt={currentLook.label}
                   loading="eager"
                   fetchPriority="high"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
@@ -1595,7 +1597,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
                     key={idx}
                     onClick={() => setActiveMatchingIndex(idx)}
                     className={`px-3.5 py-2 rounded-lg text-xs tracking-wider uppercase transition-all ${
-                      activeMatchingIndex === idx
+                      safeMatchingIndex === idx
                         ? 'bg-[#C5A880] text-black font-semibold shadow-lg'
                         : 'bg-white/5 text-white/70 border border-white/15 hover:bg-white/15 hover:text-white'
                     }`}
