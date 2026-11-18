@@ -596,7 +596,7 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
 };
 
 // Hero Section
-const HeroSection = () => {
+const HeroSection = ({ onShopClick, onOpenAllProducts }) => {
   return (
     <section className="relative w-full h-[92vh] flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Background Video */}
@@ -663,7 +663,7 @@ const HeroSection = () => {
             SHOP BY BRAND
           </motion.a>
           <motion.button
-            onClick={() => setAllProductsModalOpen(true)}
+            onClick={onOpenAllProducts}
             whileHover={{ scale: 1.03, backgroundColor: '#C5A880' }}
             whileTap={{ scale: 0.98 }}
             className="w-full sm:w-auto px-8 py-4 rounded-full border border-[#C5A880] bg-[#C5A880]/10 backdrop-blur-md text-[#C5A880] hover:text-black text-xs tracking-[0.2em] uppercase font-medium transition-all shadow-xl"
@@ -2419,7 +2419,10 @@ export default function SignatureLanding() {
     <div className="bg-[#050505] min-h-screen text-white selection:bg-[#C5A880] selection:text-black font-sans">
       <AnnouncementBar />
       <Header cart={cart} setCartOpen={setCartOpen} searchOpen={searchOpen} setSearchOpen={setSearchOpen} onNavigate={handleNavigate} />
-      <HeroSection onShopClick={() => document.getElementById('brands')?.scrollIntoView({ behavior: 'smooth' })} />
+      <HeroSection
+        onShopClick={() => document.getElementById('brands')?.scrollIntoView({ behavior: 'smooth' })}
+        onOpenAllProducts={() => setAllProductsModalOpen(true)}
+      />
       <CraftsmanshipBanner />
       <BrandFilterSection selectedBrand={selectedBrand} onBrandSelect={handleBrandSelect} />
       <ShopByCollection selectedBrand={selectedBrand} addToCart={addToCart} onQuickView={setQuickViewProduct} />
