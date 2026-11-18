@@ -1540,7 +1540,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
   const currentLook = currentTie.matchingLooks?.[safeMatchingIndex] || currentTie.matchingLooks?.[0] || { label: 'Look', image: currentTie.tieImage };
 
   return (
-    <section className="relative py-28 px-6 bg-[#070707] border-t border-b border-white/10 overflow-hidden text-center">
+    <section id="find-tie" className="relative py-28 px-6 bg-[#070707] border-t border-b border-white/10 overflow-hidden text-center">
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#0a0a0a]/90 to-black/90 z-0" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -2650,6 +2650,20 @@ export default function SignatureLanding() {
       <CraftsmanshipBanner />
       <BrandFilterSection selectedBrand={selectedBrand} onBrandSelect={handleBrandSelect} />
       <ShopByCollection selectedBrand={selectedBrand} addToCart={addToCart} onQuickView={setQuickViewProduct} />
+      <div className="bg-gradient-to-r from-[#0d0d0d] via-[#161616] to-[#0d0d0d] py-16 px-6 text-center border-y border-[#C5A880]/30 my-6">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs uppercase tracking-[0.4em] text-[#C5A880] mb-2 font-medium">BESPOKE WARDROBE HARMONY</p>
+          <h3 className="text-3xl md:text-4xl text-white font-light tracking-wide mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Unsure Which Tie Matches Your Suit?
+          </h3>
+          <a
+            href="#find-tie"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#C5A880] text-black text-xs font-semibold tracking-[0.25em] uppercase hover:bg-[#b3976f] transition-all shadow-[0_0_30px_rgba(197,168,128,0.3)]"
+          >
+            <span>✨ Find Your Perfect Tie</span>
+          </a>
+        </div>
+      </div>
       <FindYourPerfectTie addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <PressSection />
       <FaqSection />
