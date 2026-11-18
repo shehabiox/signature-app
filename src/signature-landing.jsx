@@ -992,8 +992,8 @@ const ProductItem = ({ product, addToCart, onQuickView, index }) => {
           key={activeImage}
           src={activeImage}
           alt={product.title}
-          loading="eager"
-          fetchPriority="high"
+          loading={index < 4 ? "eager" : "lazy"}
+          fetchPriority={index < 4 ? "high" : "low"}
           decoding="async"
           width="320"
           height="400"
@@ -1148,8 +1148,8 @@ const ShopByCollection = ({ selectedBrand, addToCart, onQuickView }) => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault();
         el.scrollBy({
-          left: e.deltaY,
-          behavior: 'auto',
+          left: e.deltaY * 1.2,
+          behavior: 'smooth',
         });
       }
     };
@@ -1173,8 +1173,8 @@ const ShopByCollection = ({ selectedBrand, addToCart, onQuickView }) => {
     if (containerRef.current && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
       containerRef.current.scrollBy({
-        left: e.deltaY,
-        behavior: 'auto',
+        left: e.deltaY * 1.2,
+        behavior: 'smooth',
       });
     }
   };
@@ -1917,7 +1917,8 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
                               <img
                                 src={img}
                                 alt={product.title}
-                                loading="eager"
+                                loading="lazy"
+                                fetchPriority="low"
                                 decoding="async"
                                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                               />

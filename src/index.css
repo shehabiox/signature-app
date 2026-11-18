@@ -18,6 +18,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+img {
+  content-visibility: auto;
+}
+
 *, *::before, *::after {
   -webkit-font-smoothing: antialiased;
 }
