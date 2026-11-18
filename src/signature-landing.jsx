@@ -132,7 +132,7 @@ const Header = ({ cart, setCartOpen, searchOpen, setSearchOpen, onNavigate }) =>
           </div>
 
           <nav className="hidden md:flex justify-center items-center gap-10 mt-6 pt-4 border-t border-white/5">
-            {['Home', 'Shop', 'The Journal', 'Contact', 'The Signature World'].map((item, idx) => (
+            {['Home', 'Shop', 'AI Concierge', 'The Journal', 'Contact', 'The Signature World'].map((item, idx) => (
               <a
                 key={idx}
                 href="#"
@@ -163,7 +163,7 @@ const Header = ({ cart, setCartOpen, searchOpen, setSearchOpen, onNavigate }) =>
               </button>
             </div>
             <div className="flex flex-col gap-6 text-lg">
-              {['Home', 'Shop', 'The Journal', 'Contact', 'The Signature World'].map((item) => (
+              {['Home', 'Shop', 'AI Concierge', 'The Journal', 'Contact', 'The Signature World'].map((item) => (
                 <a
                   key={item}
                   href="#"
@@ -1808,6 +1808,156 @@ const JournalModal = ({ isOpen, onClose }) => {
   );
 };
 
+const MaisonAICoachModal = ({ isOpen, onClose, addToCart }) => {
+  const [suitColor, setSuitColor] = useState('Navy');
+  const [occasion, setOccasion] = useState('Black-Tie Gala');
+  const [recommendation, setRecommendation] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const getRecommendation = () => {
+    setLoading(true);
+    setTimeout(() => {
+      let rec = {
+        title: "GUCCI - Navy and Green GG Silk Jacquard Tie",
+        brand: "GUCCI",
+        price: "1400.00",
+        currency: "LE",
+        image: "/products/GUCCI/01-navy-green-gg-silk-jacquard-tie/GUCCI%20-%20Navy%20and%20Green%20GG%20SILKJACQUARD%20TIE.jpg",
+        reason: `For a ${suitColor} suit attending a ${occasion}, the rich jewel tones and iconic jacquard weave create an air of commanding authority and refined elegance.`
+      };
+      if (suitColor === 'Black' || occasion.includes('Gala')) {
+        rec = {
+          title: "LOUIS VUITTON - Classic LV Silk Tie (Black)",
+          brand: "LOUIS VUITTON",
+          price: "1600.00",
+          currency: "LE",
+          image: "/products/LOUIS%20VUITTON/01-black-classic-lv-silk-tie/Black%20CLASSIC%20L.V%20SILK%20TIE.jpg",
+          reason: `Pairing a timeless black jacquard silk tie with a ${suitColor} ensemble for a ${occasion} delivers absolute evening sophistication.`
+        };
+      } else if (suitColor === 'Charcoal') {
+        rec = {
+          title: "DIOR - Striped CD Icon Silk Tie",
+          brand: "DIOR",
+          price: "1400.00",
+          currency: "LE",
+          image: "/products/DIOR/01-striped-cd-icon-silk-tie/DIOR%20-%20STRIPED%20CD%20ICON%20SILK%20TIE.jpg",
+          reason: `The immaculate vertical lines of the CD Icon tie complement the deep slate of a charcoal suit for elite boardroom presence.`
+        };
+      }
+      setRecommendation(rec);
+      setLoading(false);
+    }, 500);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      getRecommendation();
+    }
+  }, [isOpen, suitColor, occasion]);
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.95, opacity: 0, y: 20 }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-[#111111] border border-[#C5A880]/50 rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl relative text-left"
+        >
+          <button onClick={onClose} className="absolute top-4 right-4 text-white/60 hover:text-white p-2 bg-black/40 rounded-full">
+            <X size={20} />
+          </button>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-[#C5A880] mb-2 font-medium">MAISON VIRTUAL STYLING AI</p>
+          <h2 className="text-2xl md:text-3xl text-white font-light mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            AI Sartorial Concierge
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label className="block text-[10px] uppercase tracking-widest text-white/60 mb-1.5">Suit / Jacket Color</label>
+              <select
+                value={suitColor}
+                onChange={(e) => setSuitColor(e.target.value)}
+                className="w-full bg-[#181818] border border-white/20 rounded p-3 text-white text-xs focus:border-[#C5A880] outline-none"
+              >
+                <option value="Navy">Navy Blue</option>
+                <option value="Charcoal">Charcoal Grey</option>
+                <option value="Black">Black Tuxedo</option>
+                <option value="Burgundy">Burgundy / Wine</option>
+                <option value="Olive">Olive / Forest Green</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-[10px] uppercase tracking-widest text-white/60 mb-1.5">Occasion</label>
+              <select
+                value={occasion}
+                onChange={(e) => setOccasion(e.target.value)}
+                className="w-full bg-[#181818] border border-white/20 rounded p-3 text-white text-xs focus:border-[#C5A880] outline-none"
+              >
+                <option value="Black-Tie Gala">Black-Tie Gala / Evening</option>
+                <option value="Executive Boardroom">Executive Boardroom</option>
+                <option value="Luxury Wedding">Luxury Wedding / Celebration</option>
+                <option value="Diplomatic Reception">Diplomatic Reception</option>
+              </select>
+            </div>
+          </div>
+
+          {loading ? (
+            <div className="text-center py-16 text-[#C5A880] text-xs tracking-widest animate-pulse">
+              Consulting Maison Master Tailors...
+            </div>
+          ) : recommendation && (
+            <div className="bg-[#181818] border border-[#C5A880]/30 rounded-xl p-6 flex flex-col sm:flex-row gap-6 items-center">
+              <div className="w-32 h-40 rounded-lg overflow-hidden bg-black/50 border border-white/10 shrink-0">
+                <img src={recommendation.image} alt={recommendation.title} className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-left">
+                <span className="text-[10px] uppercase tracking-widest text-[#C5A880] font-medium">{recommendation.brand}</span>
+                <h4 className="text-white text-base font-light mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {recommendation.title}
+                </h4>
+                <p className="text-white/70 text-xs leading-relaxed mb-4 font-light">
+                  {recommendation.reason}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-[#C5A880] font-semibold text-sm">{recommendation.currency} {recommendation.price}</span>
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id: 'AI-REC-' + Date.now(),
+                        variantId: 'gid://shopify/ProductVariant/AI-REC',
+                        title: recommendation.title,
+                        brand: recommendation.brand,
+                        price: recommendation.price,
+                        currency: recommendation.currency,
+                        image: recommendation.image,
+                        quantity: 1
+                      });
+                      onClose();
+                    }}
+                    className="px-5 py-2.5 bg-[#C5A880] text-black font-semibold text-xs tracking-widest uppercase rounded hover:bg-[#b3976f] transition shadow-lg"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
 const ContactModal = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
   if (!isOpen) return null;
@@ -2437,12 +2587,15 @@ export default function SignatureLanding() {
   const [selectedBrand, setSelectedBrand] = useState(BRANDS[0]);
   const [allProductsModalOpen, setAllProductsModalOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
+  const [aiConciergeOpen, setAiConciergeOpen] = useState(false);
 
   const handleNavigate = (item) => {
     if (item === 'Home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (item === 'Shop') {
       document.getElementById('brands')?.scrollIntoView({ behavior: 'smooth' });
+    } else if (item === 'AI Concierge') {
+      setAiConciergeOpen(true);
     } else if (item === 'The Journal') {
       setJournalOpen(true);
     } else if (item === 'Contact') {
@@ -2531,6 +2684,11 @@ export default function SignatureLanding() {
         onClose={() => setAllProductsModalOpen(false)}
         addToCart={addToCart}
         onQuickView={setQuickViewProduct}
+      />
+      <MaisonAICoachModal
+        isOpen={aiConciergeOpen}
+        onClose={() => setAiConciergeOpen(false)}
+        addToCart={addToCart}
       />
       <FloatingContactWidget />
     </div>
