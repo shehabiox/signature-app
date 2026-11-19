@@ -1345,8 +1345,8 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       thumbImage: "/matching-thumbs/tie-thumb-1.webp",
       matchingLooks: [
         { label: "Charcoal Suit", image: "/matching/8b571844-2e70-49aa-8228-e7d0679616af.jpg" },
-        { label: "Navy Tailored", image: "/matching/74dab8e0-0109-4480-a7dc-2755d9107bd0.jpg" },
-        { label: "Classic Elegance", image: "/matching/30319d81-b813-4b22-85b5-08181ac54ca3.jpg" }
+        { label: "Navy Suit", image: "/matching/74dab8e0-0109-4480-a7dc-2755d9107bd0.jpg" },
+        { label: "Midnight Blue", image: "/matching/30319d81-b813-4b22-85b5-08181ac54ca3.jpg" }
       ],
       title: "DIOR - Striped CD Icon Silk Tie",
       price: "1400.00",
@@ -1357,7 +1357,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/GUCCI/01-navy-green-gg-silk-jacquard-tie/GUCCI%20-%20Navy%20and%20Green%20GG%20SILKJACQUARD%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-2.webp",
       matchingLooks: [
-        { label: "Navy Tailored", image: "/matching/e475c486-ddd4-4f46-923a-4d664a5b45b3.jpg" },
+        { label: "Navy Suit", image: "/matching/e475c486-ddd4-4f46-923a-4d664a5b45b3.jpg" },
         { label: "Forest Green", image: "/matching/814b03c4-9503-4f33-9a3b-2d0b73021f56.jpg" },
         { label: "Classic Navy", image: "/matching/watermarked_img_11387676837491808454.jpg" }
       ],
@@ -1369,10 +1369,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       name: "GUCCI - Bee Stripped Silk Tie (Navy and Blue)",
       tieImage: "/products/GUCCI/18-navy-bee-stripped-silk-tie/GUCCI%20-%20Navy%20BEE%20STRIPPED%20SILK%20TIE.jpg",
       matchingLooks: [
-        { label: "Look 1", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit.jpg" },
-        { label: "Look 2", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit%20(2).jpg" },
-        { label: "Look 3", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit%20(3).jpg" },
-        { label: "Look 4", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit%20(4).jpg" }
+        { label: "Navy Suit", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit.jpg" },
+        { label: "Azure Blue", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit%20(2).jpg" },
+        { label: "Royal Blue", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit%20(3).jpg" },
+        { label: "Midnight Navy", image: "/matching/GUCCI%20-%20Navy%20Bee%20Stripped%20Silk%20Tie%20matching%20suit%20(4).jpg" }
       ],
       title: "GUCCI - Bee Stripped Silk Tie (Navy and Blue)",
       price: "1400.00",
@@ -1383,10 +1383,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/GUCCI/03-black-gg-jacquard-pattern/GUCCI%20-%20Black%20GG%20JACQUARD%20PATTERN.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-4.webp",
       matchingLooks: [
-        { label: "Black Look 1", image: "/matching/gucci-black-gg-1.jpg" },
-        { label: "Black Look 2", image: "/matching/gucci-black-gg-2.jpg" },
-        { label: "Black Look 3", image: "/matching/gucci-black-gg-3.jpg" },
-        { label: "Black Look 4", image: "/matching/gucci-black-gg-4.jpg" }
+        { label: "Jet Black", image: "/matching/gucci-black-gg-1.jpg" },
+        { label: "Charcoal Suit", image: "/matching/gucci-black-gg-2.jpg" },
+        { label: "Onyx Tuxedo", image: "/matching/gucci-black-gg-3.jpg" },
+        { label: "Slate Grey", image: "/matching/gucci-black-gg-4.jpg" }
       ],
       title: "GUCCI - Black GG Jacquard Pattern Tie",
       price: "1400.00",
@@ -1397,9 +1397,9 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/GUCCI/06-dark-red-gg-pattern-check-silk/GUCCI%20-%20Dark%20Red%20GG%20PATTERN%20CHECK%20SILK.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-5.webp",
       matchingLooks: [
-        { label: "Burgundy Accent", image: "/matching/bc650dc0-9722-406b-82da-4554df6d6611.jpg" },
+        { label: "Burgundy Suit", image: "/matching/bc650dc0-9722-406b-82da-4554df6d6611.jpg" },
         { label: "Charcoal Suit", image: "/matching/83156078-4e16-44ca-8ee4-a4c9df0513ff.jpg" },
-        { label: "Midnight Suit", image: "/matching/d6c1826b-3e23-4006-8883-4d51fc8831ce.jpg" }
+        { label: "Midnight Blue", image: "/matching/d6c1826b-3e23-4006-8883-4d51fc8831ce.jpg" }
       ],
       title: "GUCCI - Dark Red GG Pattern Check Silk Tie",
       price: "1400.00",
@@ -1410,10 +1410,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/BURBERRY/01-bt-lined-silk-tie/BURBERRY%20-%20BT%20LINED%20SILK%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-6.webp",
       matchingLooks: [
-        { label: "Burberry Look 1", image: "/matching/burberry-1.jpg" },
-        { label: "Burberry Look 2", image: "/matching/burberry-2.jpg" },
-        { label: "Burberry Look 3", image: "/matching/burberry-3.jpg" },
-        { label: "Burberry Look 4", image: "/matching/burberry-4.jpg" }
+        { label: "Classic Beige", image: "/matching/burberry-1.jpg" },
+        { label: "Navy Suit", image: "/matching/burberry-2.jpg" },
+        { label: "Charcoal Suit", image: "/matching/burberry-3.jpg" },
+        { label: "Jet Black", image: "/matching/burberry-4.jpg" }
       ],
       title: "BURBERRY - BT Lined Silk Tie",
       price: "1400.00",
@@ -1424,9 +1424,9 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/Salvatore%20Ferragamo/01-aqua-green-small-pattern-silk-tie/Ferragamo%20-%20Aqua%20Green%20small%20pattern%20Silk%20Tie.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-7.webp",
       matchingLooks: [
-        { label: "Teal Accent", image: "/matching/Sophisticated%20Teal%20Tie%20Portrait.png" },
-        { label: "Aqua Formal", image: "/matching/Confident%20Teal-Tie%20Portrait.png" },
-        { label: "Modern Suit", image: "/matching/dd2e385e-e196-41a3-bb14-dc4693c7029a.png" }
+        { label: "Aqua Green", image: "/matching/Sophisticated%20Teal%20Tie%20Portrait.png" },
+        { label: "Teal Formal", image: "/matching/Confident%20Teal-Tie%20Portrait.png" },
+        { label: "Cyan Accent", image: "/matching/dd2e385e-e196-41a3-bb14-dc4693c7029a.png" }
       ],
       title: "Salvatore Ferragamo - Small Pattern Silk Tie (Aqua Green)",
       price: "1600.00",
@@ -1438,9 +1438,9 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       thumbImage: "/matching-thumbs/tie-thumb-8.webp",
       matchingLooks: [
         { label: "Maroon Silk", image: "/matching/7e3773eb-8070-4f97-9803-b37a2720f3e1.jpg" },
-        { label: "Evening Suit", image: "/matching/5f593cb6-4ec4-4ab5-b84e-d02ba0c0f980.jpg" },
-        { label: "Burgundy Look", image: "/matching/2c061128-8fb0-401d-9a90-f8a635e0c633.jpg" },
-        { label: "Signature Look", image: "/matching/e1a5e31b-849b-44dc-92e6-fe0931efa79b.jpg" }
+        { label: "Evening Tuxedo", image: "/matching/5f593cb6-4ec4-4ab5-b84e-d02ba0c0f980.jpg" },
+        { label: "Burgundy Suit", image: "/matching/2c061128-8fb0-401d-9a90-f8a635e0c633.jpg" },
+        { label: "Wine Velvet", image: "/matching/e1a5e31b-849b-44dc-92e6-fe0931efa79b.jpg" }
       ],
       title: "GIVENCHY - Maroon Solid Classic Silk Tie",
       price: "1500.00",
@@ -1451,10 +1451,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/CHANEL/01-blue-cc-pattern-silk-tie/CHANEL%20Blue%20CC%20pattern%20silk%20tie.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-9.webp",
       matchingLooks: [
-        { label: "Chanel Look 1", image: "/matching/chanel-1.jpg" },
-        { label: "Chanel Look 2", image: "/matching/chanel-2.jpg" },
-        { label: "Chanel Look 3", image: "/matching/chanel-3.jpg" },
-        { label: "Chanel Look 4", image: "/matching/chanel-4.jpg" }
+        { label: "Royal Blue", image: "/matching/chanel-1.jpg" },
+        { label: "Navy Suit", image: "/matching/chanel-2.jpg" },
+        { label: "Sky Accent", image: "/matching/chanel-3.jpg" },
+        { label: "Midnight Blue", image: "/matching/chanel-4.jpg" }
       ],
       title: "CHANEL - CC Pattern Silk Tie (Blue)",
       price: "1400.00",
@@ -1465,10 +1465,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/LOUIS%20VUITTON/01-black-classic-lv-silk-tie/Black%20CLASSIC%20L.V%20SILK%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-10.webp",
       matchingLooks: [
-        { label: "LV Look 1", image: "/matching/louis-vuitton-1.jpg" },
-        { label: "LV Look 2", image: "/matching/louis-vuitton-2.jpg" },
-        { label: "LV Look 3", image: "/matching/louis-vuitton-3.jpg" },
-        { label: "LV Look 4", image: "/matching/louis-vuitton-4.jpg" }
+        { label: "Jet Black", image: "/matching/louis-vuitton-1.jpg" },
+        { label: "Charcoal Suit", image: "/matching/louis-vuitton-2.jpg" },
+        { label: "Midnight Suit", image: "/matching/louis-vuitton-3.jpg" },
+        { label: "Onyx Tuxedo", image: "/matching/louis-vuitton-4.jpg" }
       ],
       title: "LOUIS VUITTON - Classic LV Silk Tie (Black)",
       price: "1600.00",
@@ -1479,10 +1479,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/LOUIS%20VUITTON/02-blue-ecu-silk-tie/LOUIS%20VUITTON%20-%20Blue%20ECU%20SILK%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-11.webp",
       matchingLooks: [
-        { label: "LV Ecu Look 1", image: "/matching/louis-vuitton-ecu-1.jpg" },
-        { label: "LV Ecu Look 2", image: "/matching/louis-vuitton-ecu-2.jpg" },
-        { label: "LV Ecu Look 3", image: "/matching/louis-vuitton-ecu-3.jpg" },
-        { label: "LV Ecu Look 4", image: "/matching/louis-vuitton-ecu-4.jpg" }
+        { label: "Navy Suit", image: "/matching/louis-vuitton-ecu-1.jpg" },
+        { label: "Royal Blue", image: "/matching/louis-vuitton-ecu-2.jpg" },
+        { label: "Midnight Blue", image: "/matching/louis-vuitton-ecu-3.jpg" },
+        { label: "Azure Suit", image: "/matching/louis-vuitton-ecu-4.jpg" }
       ],
       title: "LOUIS VUITTON - Ecu Silk Tie (Blue)",
       price: "1400.00",
@@ -1493,10 +1493,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/HERMES/01-orange-colourful-jump-silk-tie/Orange%20Colourful%20Jump%20Silk%20Tie.jpg",
       thumbImage: "/matching-thumbs/hermes-orange-jump.webp",
       matchingLooks: [
-        { label: "Hermès Orange Look 1", image: "/matching/hermes-orange-1.jpg" },
-        { label: "Hermès Orange Look 2", image: "/matching/hermes-orange-2.jpg" },
-        { label: "Hermès Orange Look 3", image: "/matching/hermes-orange-3.jpg" },
-        { label: "Hermès Orange Look 4", image: "/matching/hermes-orange-4.jpg" }
+        { label: "Mandarin Orange", image: "/matching/hermes-orange-1.jpg" },
+        { label: "Navy Suit", image: "/matching/hermes-orange-2.jpg" },
+        { label: "Charcoal Suit", image: "/matching/hermes-orange-3.jpg" },
+        { label: "Cognac Brown", image: "/matching/hermes-orange-4.jpg" }
       ],
       title: "HERMÈS - Colourful Jump Silk Tie (Orange)",
       price: "1400.00",
@@ -1507,10 +1507,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/HERMES/05-olive-petits-maillons-silk-tie/HERMES%20-%20Olive%20PETITS%20MAILLONS%20SILK%20TIE.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-14.webp",
       matchingLooks: [
-        { label: "Hermès Olive Look 1", image: "/matching/hermes-olive-1.jpg" },
-        { label: "Hermès Olive Look 2", image: "/matching/hermes-olive-2.jpg" },
-        { label: "Hermès Olive Look 3", image: "/matching/hermes-olive-3.jpg" },
-        { label: "Hermès Olive Look 4", image: "/matching/hermes-olive-4.jpg" }
+        { label: "Olive Green", image: "/matching/hermes-olive-1.jpg" },
+        { label: "Forest Suit", image: "/matching/hermes-olive-2.jpg" },
+        { label: "Khaki Tailored", image: "/matching/hermes-olive-3.jpg" },
+        { label: "Earth Brown", image: "/matching/hermes-olive-4.jpg" }
       ],
       title: "HERMÈS - Petits Maillons Silk Tie (Olive)",
       price: "1400.00",
@@ -1521,10 +1521,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/HERMES/06-red-h-scintillant-silk-tie/Hermes%20-%20Red%20H%20scintillant%20silk%20tie.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-15.webp",
       matchingLooks: [
-        { label: "Hermès Red Look 1", image: "/matching/hermes-red-h-1.jpg" },
-        { label: "Hermès Red Look 2", image: "/matching/hermes-red-h-2.jpg" },
-        { label: "Hermès Red Look 3", image: "/matching/hermes-red-h-3.jpg" },
-        { label: "Hermès Red Look 4", image: "/matching/hermes-red-h-4.jpg" }
+        { label: "Crimson Red", image: "/matching/hermes-red-h-1.jpg" },
+        { label: "Burgundy Suit", image: "/matching/hermes-red-h-2.jpg" },
+        { label: "Jet Black", image: "/matching/hermes-red-h-3.jpg" },
+        { label: "Charcoal Suit", image: "/matching/hermes-red-h-4.jpg" }
       ],
       title: "HERMÈS - H Scintillant Silk Tie (Red)",
       price: "1600.00",
@@ -1535,10 +1535,10 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
       tieImage: "/products/GUCCI/10-purple-dark-gg-pattern-silk-tie/Gucci%20-%20Purple%20Dark%20With%20GG%20Pattern%20Silk%20Tie.jpg",
       thumbImage: "/matching-thumbs/tie-thumb-16.webp",
       matchingLooks: [
-        { label: "Gucci Purple Look 1", image: "/matching/gucci-purple-1.jpg" },
-        { label: "Gucci Purple Look 2", image: "/matching/gucci-purple-2.jpg" },
-        { label: "Gucci Purple Look 3", image: "/matching/gucci-purple-3.jpg" },
-        { label: "Gucci Purple Look 4", image: "/matching/gucci-purple-4.jpg" }
+        { label: "Dark Purple", image: "/matching/gucci-purple-1.jpg" },
+        { label: "Midnight Suit", image: "/matching/gucci-purple-2.jpg" },
+        { label: "Jet Black", image: "/matching/gucci-purple-3.jpg" },
+        { label: "Charcoal Suit", image: "/matching/gucci-purple-4.jpg" }
       ],
       title: "GUCCI - GG Pattern Silk Tie (Dark Purple)",
       price: "1200.00",
