@@ -2659,7 +2659,7 @@ const Footer = ({ onOpenPrivacy, onOpenTerms, onOpenCaseStudies }) => {
               <button onClick={onOpenCaseStudies} className="hover:text-white transition">Case Studies</button>
             </div>
             <a
-              href="https://wa.me/201130503073?text=Hello%20FrostLab,%20I%20saw%20your%20credit%20on%20Maison%20Signature%20and%20would%20like%20to%20inquire%20about%20web%20development."
+              href="https://wa.me/201065486154?text=Hello%20FrostLab,%20I%20saw%20your%20credit%20on%20Maison%20Signature%20and%20would%20like%20to%20inquire%20about%20web%20development."
               target="_blank"
               rel="noreferrer"
               className="text-white/60 hover:text-[#C5A880] transition inline-flex items-center gap-1.5 tracking-wider text-[11px]"
