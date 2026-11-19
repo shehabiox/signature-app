@@ -2652,10 +2652,22 @@ const Footer = ({ onOpenPrivacy, onOpenTerms, onOpenCaseStudies }) => {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 tracking-widest">
           <p>© 2026 MAISON SIGNATURE. ALL RIGHTS RESERVED. 100% MADE IN EGYPT & ITALY.</p>
-          <div className="flex gap-6">
-            <button onClick={onOpenPrivacy} className="hover:text-white transition">Privacy Policy</button>
-            <button onClick={onOpenTerms} className="hover:text-white transition">Terms of Service</button>
-            <button onClick={onOpenCaseStudies} className="hover:text-white transition">Case Studies</button>
+          <div className="flex items-center gap-6">
+            <div className="flex gap-6">
+              <button onClick={onOpenPrivacy} className="hover:text-white transition">Privacy Policy</button>
+              <button onClick={onOpenTerms} className="hover:text-white transition">Terms of Service</button>
+              <button onClick={onOpenCaseStudies} className="hover:text-white transition">Case Studies</button>
+            </div>
+            <a
+              href="https://wa.me/201130503073?text=Hello%20FrostLab,%20I%20saw%20your%20credit%20on%20Maison%20Signature%20and%20would%20like%20to%20inquire%20about%20web%20development."
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/60 hover:text-[#C5A880] transition inline-flex items-center gap-1.5 tracking-wider text-[11px]"
+              title="Contact FrostLab via WhatsApp"
+            >
+              <span>Created by</span>
+              <span className="text-[#C5A880] font-medium tracking-widest underline decoration-[#C5A880]/40 underline-offset-4">FrostLab</span>
+            </a>
           </div>
         </div>
       </div>
