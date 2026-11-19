@@ -757,6 +757,21 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
   const [hasBox, setHasBox] = useState(false); // No Box as default
   const [zoomModalOpen, setZoomModalOpen] = useState(false);
 
+  useEffect(() => {
+    if (product?.images) {
+      product.images.forEach(img => {
+        const i = new Image();
+        i.src = img;
+      });
+    }
+    if (product?.colors) {
+      product.colors.forEach(col => {
+        const i = new Image();
+        i.src = col.image;
+      });
+    }
+  }, [product]);
+
   if (!isOpen || !product) return null;
 
   const images = product.colors
@@ -994,6 +1009,21 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
 const ProductItem = ({ product, addToCart, onQuickView, index }) => {
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  useEffect(() => {
+    if (product?.images) {
+      product.images.forEach(img => {
+        const i = new Image();
+        i.src = img;
+      });
+    }
+    if (product?.colors) {
+      product.colors.forEach(col => {
+        const i = new Image();
+        i.src = col.image;
+      });
+    }
+  }, [product]);
 
   const activeImage = product.colors
     ? product.colors[selectedColorIndex].image
