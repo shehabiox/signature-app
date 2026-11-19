@@ -41,17 +41,17 @@ async function shopifyFetch(query, variables = {}) {
 }
 
 // Marquee Component
-const Marquee = ({ text, speed = 40 }) => {
+const Marquee = ({ text, speed = 25 }) => {
   return (
     <div className="overflow-hidden bg-[#0a0a0a] border-b border-white/10 py-2.5">
       <motion.div
-        animate={{ x: ['0%', '-50%'] }}
+        animate={{ x: ['0%', '-33.333%'] }}
         transition={{ duration: speed, repeat: Infinity, ease: 'linear' }}
         className="flex whitespace-nowrap will-change-transform"
         style={{ transform: 'translateZ(0)' }}
       >
-        {[...Array(2)].map((_, i) => (
-          <div key={i} className="flex items-center">
+        {[...Array(3)].map((_, i) => (
+          <div key={i} className="flex items-center shrink-0">
             {text.split('•').map((item, idx) => (
               <span key={idx} className="text-xs uppercase tracking-[0.25em] text-[#C5A880] mx-6 flex items-center font-sans font-medium">
                 {item.trim()}
