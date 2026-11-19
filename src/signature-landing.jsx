@@ -781,7 +781,8 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 md:p-6 overflow-y-auto"
+        className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto pb-safe"
+        style={{ WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}
         onClick={onClose}
       >
         <motion.div
@@ -789,7 +790,8 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.95, opacity: 0, y: 20 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-[#111111] border border-white/10 rounded-xl overflow-hidden max-w-4xl w-full my-auto max-h-[90vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 shadow-2xl relative"
+          className="bg-[#111111] border border-white/10 rounded-xl max-w-4xl w-full my-auto max-h-[85vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 shadow-2xl relative pb-8 md:pb-0"
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <button
             onClick={onClose}
