@@ -72,7 +72,7 @@ const AnnouncementBar = () => {
 };
 
 // Header Component
-const Header = ({ cart, setCartOpen, searchOpen, setSearchOpen, onNavigate }) => {
+const Header = ({ cart, setCartOpen, searchOpen, setSearchOpen, onNavigate, currency, setCurrency }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -96,7 +96,17 @@ const Header = ({ cart, setCartOpen, searchOpen, setSearchOpen, onNavigate }) =>
             </button>
 
             <div className="hidden md:flex items-center gap-2 text-xs text-[#C5A880] tracking-widest uppercase">
-              {/* Removed location indicator */}
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="bg-transparent border border-white/20 rounded px-2 py-1 text-white text-[10px] tracking-wider outline-none cursor-pointer hover:border-[#C5A880]"
+              >
+                <option value="LE" className="bg-[#111] text-white">LE (EGP)</option>
+                <option value="USD" className="bg-[#111] text-white">USD ($)</option>
+                <option value="EUR" className="bg-[#111] text-white">EUR (€)</option>
+                <option value="SAR" className="bg-[#111] text-white">SAR (﷼)</option>
+                <option value="AED" className="bg-[#111] text-white">AED (د.إ)</option>
+              </select>
             </div>
 
             <div className="absolute left-1/2 transform -translate-x-1/2 text-center">
@@ -2283,6 +2293,56 @@ const PressSection = () => {
   );
 };
 
+const VipTestimonialsSection = () => {
+  const testimonials = [
+    {
+      name: "HE Sheikh Mohammed Al-Falasi",
+      title: "Dubai, UAE",
+      quote: "The quality of the Hermès and Gucci jacquard silk ties is truly indistinguishable from the flagship boutiques in Milan. Maison Signature is the gold standard.",
+      rating: "★★★★★"
+    },
+    {
+      name: "Dr. Tarek El-Khatib",
+      title: "Zamalek, Cairo",
+      quote: "The AI concierge paired my navy tuxedo with the perfect Louis Vuitton tie for our charity gala. Exceptional craftsmanship and lightning-fast delivery.",
+      rating: "★★★★★"
+    },
+    {
+      name: "Julian Sterling",
+      title: "Mayfair, London",
+      quote: "Immaculate drape, pristine wool-blend interlining, and stunning luxury packaging. Unmatched elegance.",
+      rating: "★★★★★"
+    }
+  ];
+
+  return (
+    <section className="py-24 px-6 bg-[#060606] border-t border-white/10 text-center">
+      <div className="max-w-6xl mx-auto">
+        <p className="text-xs uppercase tracking-[0.4em] text-[#C5A880] mb-3 font-medium">ELITE CLIENT TESTIMONIALS</p>
+        <h2 className="text-3xl md:text-5xl text-white font-light tracking-wide mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          Words from Distinguished Gentlemen
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((t, idx) => (
+            <div key={idx} className="bg-[#111111] border border-white/10 p-8 rounded-2xl shadow-2xl flex flex-col justify-between text-left relative overflow-hidden group hover:border-[#C5A880]/50 transition-all">
+              <div>
+                <div className="text-[#C5A880] text-sm mb-4 tracking-widest">{t.rating}</div>
+                <p className="text-white/80 text-xs md:text-sm italic font-light leading-relaxed mb-6">
+                  "{t.quote}"
+                </p>
+              </div>
+              <div className="pt-4 border-t border-white/10">
+                <h4 className="text-white text-xs font-medium tracking-widest uppercase">{t.name}</h4>
+                <p className="text-[#C5A880] text-[10px] uppercase tracking-wider mt-0.5">{t.title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const FloatingContactWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -2589,6 +2649,7 @@ export default function SignatureLanding() {
   const [allProductsModalOpen, setAllProductsModalOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [aiConciergeOpen, setAiConciergeOpen] = useState(false);
+  const [currency, setCurrency] = useState('LE');
 
   const handleNavigate = (item) => {
     if (item === 'Home') {
@@ -2643,7 +2704,7 @@ export default function SignatureLanding() {
   return (
     <div className="bg-[#050505] min-h-screen text-white selection:bg-[#C5A880] selection:text-black font-sans">
       <AnnouncementBar />
-      <Header cart={cart} setCartOpen={setCartOpen} searchOpen={searchOpen} setSearchOpen={setSearchOpen} onNavigate={handleNavigate} />
+      <Header cart={cart} setCartOpen={setCartOpen} searchOpen={searchOpen} setSearchOpen={setSearchOpen} onNavigate={handleNavigate} currency={currency} setCurrency={setCurrency} />
       <HeroSection
         onShopClick={() => document.getElementById('brands')?.scrollIntoView({ behavior: 'smooth' })}
         onOpenAllProducts={() => setAllProductsModalOpen(true)}
@@ -2667,6 +2728,7 @@ export default function SignatureLanding() {
       <ShopByCollection selectedBrand={selectedBrand} addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <FindYourPerfectTie addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <PressSection />
+      <VipTestimonialsSection />
       <FaqSection />
       <Footer onOpenPrivacy={() => setPrivacyOpen(true)} onOpenTerms={() => setTermsOpen(true)} onOpenCaseStudies={() => setCaseStudiesOpen(true)} />
       <CookieConsentBanner onAccept={() => {
