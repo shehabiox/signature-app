@@ -611,15 +611,27 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
 
 // Hero Section
 const HeroSection = ({ onShopClick, onOpenAllProducts }) => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.log('Mobile autoplay handled:', err);
+      });
+    }
+  }, []);
+
   return (
     <section className="relative w-full h-[92vh] flex flex-col items-center justify-center overflow-hidden bg-black">
-      {/* Background Video */}
+      {/* Background Video with Instant Poster & Mobile Autoplay Handlers */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
+        poster="/matching/68dab2ae-6d14-4bae-ae36-4adbcc63afa5.jpg"
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
       >
         <source src="/hero-video.mov" type="video/quicktime" />
@@ -2070,9 +2082,10 @@ const ContactModal = ({ isOpen, onClose }) => {
 
 const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
   const { formatPrice } = useCurrency();
-  const [productsByBrand, setProductsByBrand] = useState({});
+  const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeBrandFilter, setActiveBrandFilter] = useState('ALL');
+  const [visibleCount, setVisibleCount] = useState(16);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -2081,11 +2094,7 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
       try {
         const res = await fetch(`/products.json?v=${Date.now()}`);
         const all = await res.json();
-        const grouped = {};
-        BRANDS.forEach(b => {
-          grouped[b.name] = all.filter(p => (p.brand || '').toLowerCase() === b.name.toLowerCase() || (b.name === 'FERRAGAMO' && (p.brand || '').toLowerCase().includes('ferragamo')));
-        });
-        setProductsByBrand(grouped);
+        setAllProducts(all);
       } catch (e) {
         console.error('Failed to load all products', e);
       } finally {
@@ -2095,7 +2104,17 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
     fetchAll();
   }, [isOpen]);
 
+  useEffect(() => {
+    setVisibleCount(16);
+  }, [activeBrandFilter]);
+
   if (!isOpen) return null;
+
+  const filteredProducts = activeBrandFilter === 'ALL'
+    ? allProducts
+    : allProducts.filter(p => (p.brand || '').toLowerCase() === activeBrandFilter.toLowerCase() || (activeBrandFilter === 'FERRAGAMO' && (p.brand || '').toLowerCase().includes('ferragamo')));
+
+  const displayedProducts = filteredProducts.slice(0, visibleCount);
 
   return (
     <AnimatePresence>
@@ -2150,62 +2169,64 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
           </div>
 
           <div
-            className="p-6 md:p-10 overflow-y-auto flex-1 space-y-12"
-            style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch' }}
+            className="p-6 md:p-10 overflow-y-auto flex-1 space-y-6"
+            style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch', transform: 'translate3d(0,0,0)' }}
           >
             {loading ? (
               <div className="text-center py-20 text-white/50 tracking-widest text-sm">Loading all curated ties...</div>
             ) : (
-              Object.entries(productsByBrand)
-                .filter(([brandName]) => activeBrandFilter === 'ALL' || brandName === activeBrandFilter)
-                .map(([brandName, brandProducts]) => {
-                  if (!brandProducts || brandProducts.length === 0) return null;
-                  return (
-                    <div key={brandName} className="space-y-4" style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 500px' }}>
-                      <div className="flex items-center gap-4 pb-3 border-b border-[#C5A880]/30">
-                        <h4 className="text-xl text-[#C5A880] tracking-widest uppercase font-medium" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                          {brandName}
-                        </h4>
-                        <span className="text-xs text-white/40 tracking-wider">({brandProducts.length} {brandProducts.length === 1 ? 'Piece' : 'Pieces'})</span>
-                      </div>
+              <>
+                <div className="flex justify-between items-center text-xs text-white/50 tracking-widest uppercase pb-2 border-b border-white/10">
+                  <span>Showing {displayedProducts.length} of {filteredProducts.length} luxury pieces</span>
+                  <span className="text-[#C5A880] font-medium">{activeBrandFilter}</span>
+                </div>
 
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                        {brandProducts.map((product) => {
-                          const img = product.images?.[0] || product.image;
-                          return (
-                            <div
-                              key={product.id}
-                              onClick={() => {
-                                onQuickView(product);
-                                onClose();
-                              }}
-                              className="group bg-[#161616] border border-white/10 rounded-2xl p-4 cursor-pointer transition-all hover:border-[#C5A880] hover:-translate-y-1 shadow-lg flex flex-col justify-between"
-                              style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }}
-                            >
-                              <div className="aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-[#111111] border border-white/10 relative">
-                                <img
-                                  src={img}
-                                  alt={product.title}
-                                  loading="lazy"
-                                  fetchPriority="low"
-                                  decoding="async"
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                              </div>
-                              <h5 className="text-xs text-white font-light tracking-wide truncate group-hover:text-[#C5A880] transition-colors mb-2">
-                                {product.title}
-                              </h5>
-                              <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                                <span className="text-[10px] text-[#C5A880] tracking-wider uppercase">Quick View</span>
-                                <span className="text-xs text-white font-semibold">{formatPrice(product.price)}</span>
-                              </div>
-                            </div>
-                          );
-                        })}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                  {displayedProducts.map((product) => {
+                    const img = product.images?.[0] || product.image;
+                    return (
+                      <div
+                        key={product.id}
+                        onClick={() => {
+                          onQuickView(product);
+                          onClose();
+                        }}
+                        className="group bg-[#161616] border border-white/10 rounded-2xl p-4 cursor-pointer transition-all hover:border-[#C5A880] hover:-translate-y-1 shadow-lg flex flex-col justify-between"
+                        style={{ transform: 'translate3d(0,0,0)', willChange: 'transform' }}
+                      >
+                        <div className="aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-[#111111] border border-white/10 relative">
+                          <img
+                            src={img}
+                            alt={product.title}
+                            loading="lazy"
+                            fetchPriority="low"
+                            decoding="async"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <h5 className="text-xs text-white font-light tracking-wide truncate group-hover:text-[#C5A880] transition-colors mb-2">
+                          {product.title}
+                        </h5>
+                        <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                          <span className="text-[10px] text-[#C5A880] tracking-wider uppercase">Quick View</span>
+                          <span className="text-xs text-white font-semibold">{formatPrice(product.price)}</span>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })
+                    );
+                  })}
+                </div>
+
+                {visibleCount < filteredProducts.length && (
+                  <div className="text-center pt-8 pb-4">
+                    <button
+                      onClick={() => setVisibleCount(prev => prev + 16)}
+                      className="px-8 py-3.5 bg-white/10 hover:bg-[#C5A880] hover:text-black text-white text-xs font-semibold tracking-[0.2em] uppercase rounded-full transition shadow-lg border border-white/20"
+                    >
+                      Load More Ties ({filteredProducts.length - visibleCount} remaining)
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
