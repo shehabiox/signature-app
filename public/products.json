@@ -240,7 +240,7 @@
   {
     "id": "DIO-004",
     "variantId": "gid://shopify/ProductVariant/DIO-004",
-    "title": "DIOR - CD Pattern Silk Tie (Black)",
+    "title": "DIOR - Black CD Pattern Silk Tie",
     "brand": "DIOR",
     "price": "1300.00",
     "boxPrice": "1500.00",
@@ -267,7 +267,7 @@
   {
     "id": "DIO-005",
     "variantId": "gid://shopify/ProductVariant/DIO-005",
-    "title": "DIOR - CD Diamond Silk Tie (Black)",
+    "title": "DIOR - Black CD Diamond Silk Tie",
     "brand": "DIOR",
     "price": "1500.00",
     "boxPrice": "1700.00",
@@ -293,7 +293,7 @@
   {
     "id": "DIO-006",
     "variantId": "gid://shopify/ProductVariant/DIO-006",
-    "title": "DIOR - Dark Purple CD Icon Silk Tie (Dark Purple)",
+    "title": "DIOR - Dark Purple CD Icon Silk Tie",
     "brand": "DIOR",
     "price": "1500.00",
     "boxPrice": "1700.00",
@@ -320,7 +320,7 @@
   {
     "id": "DIO-007",
     "variantId": "gid://shopify/ProductVariant/DIO-007",
-    "title": "DIOR - CD Silk Tie (Navy)",
+    "title": "DIOR - Navy CD Silk Tie",
     "brand": "DIOR",
     "price": "1500.00",
     "boxPrice": "1700.00",
@@ -345,9 +345,35 @@
     }
   },
   {
+    "id": "DIO-008",
+    "variantId": "gid://shopify/ProductVariant/DIO-008",
+    "title": "DIOR - Black Geometric Pattern Silk Tie",
+    "brand": "DIOR",
+    "price": "1400.00",
+    "boxPrice": "1600.00",
+    "originalPrice": "1800.00",
+    "currency": "LE",
+    "image": "/products/DIOR/04-black-cd-pattern-silk-tie/DIOR%20-%20Black%20CD%20Pattern%20Silk%20Tie.jpg",
+    "images": [
+      "/products/DIOR/04-black-cd-pattern-silk-tie/DIOR%20-%20Black%20CD%20Pattern%20Silk%20Tie.jpg",
+      "/products/DIOR/04-black-cd-pattern-silk-tie/DIOR%20-%20Black%20CD%20Pattern%20Silk%20Tie%20(2).jpg"
+    ],
+    "material": "Silk",
+    "width": "7.0 CM",
+    "length": "147 CM",
+    "specifications": {
+      "Brand": "DIOR",
+      "Material": "Silk",
+      "Width": "7.0 CM",
+      "Length": "147 CM",
+      "Price Without Box": "1400.00 LE",
+      "Price Including Box": "1600.00 LE"
+    }
+  },
+  {
     "id": "GIV-001",
     "variantId": "gid://shopify/ProductVariant/GIV-001",
-    "title": "GIVENCHY - Solid Classic Silk Tie (Maroon)",
+    "title": "GIVENCHY - Maroon Solid Classic Silk Tie",
     "brand": "GIVENCHY",
     "price": "1500.00",
     "boxPrice": "1700.00",
@@ -973,11 +999,11 @@
   {
     "id": "HER-004",
     "variantId": "gid://shopify/ProductVariant/HER-004",
-    "title": "HERMÈS - Out of the Box Soft Silk Tie (Blue)",
+    "title": "HERMÈS - Hermes Dark Navy With Sport-themed Silk Tie",
     "brand": "HERMÈS",
-    "price": "1700.00",
-    "boxPrice": "1900.00",
-    "originalPrice": "2100.00",
+    "price": "1500.00",
+    "boxPrice": "1700.00",
+    "originalPrice": "1900.00",
     "currency": "LE",
     "image": "/products/HERMES/04-blue-out-of-the-box-soft-silk-tie/Blue%20OUT%20OF%20THE%20BOX%20SOFT%20SILK%20TIE.jpg",
     "images": [
@@ -992,8 +1018,8 @@
       "Material": "100% Pure Soft Silk",
       "Width": "7.0 CM",
       "Length": "147 CM",
-      "Price Without Box": "1700.00 LE",
-      "Price Including Box": "1900.00 LE"
+      "Price Without Box": "1500.00 LE",
+      "Price Including Box": "1700.00 LE"
     }
   },
   {
@@ -1233,7 +1259,7 @@
   {
     "id": "FER-001",
     "variantId": "gid://shopify/ProductVariant/FER-001",
-    "title": "Salvatore Ferragamo - Small Pattern Silk Tie (Aqua Green)",
+    "title": "Salvatore Ferragamo - Aqua Green small pattern Silk Tie",
     "brand": "Salvatore Ferragamo",
     "price": "1600.00",
     "boxPrice": "1800.00",
@@ -1259,7 +1285,7 @@
   {
     "id": "FER-002",
     "variantId": "gid://shopify/ProductVariant/FER-002",
-    "title": "Salvatore Ferragamo - Silk Tie (Navy Blue)",
+    "title": "Salvatore Ferragamo - Navy Blue With Big Gancini Silk Tie",
     "brand": "Salvatore Ferragamo",
     "price": "1600.00",
     "boxPrice": "1800.00",
@@ -1275,7 +1301,7 @@
     "length": "147 CM",
     "specifications": {
       "Brand": "Salvatore Ferragamo",
-      "Material": "Silk",
+      "Material": "Salvatore Ferragamo",
       "Width": "8.0 CM",
       "Length": "147 CM",
       "Price Without Box": "1600.00 LE",
