@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, User, ShoppingBag, ChevronLeft, ChevronRight, MessageCircle, X, Menu, Trash2 } from 'lucide-react';
 import './index.css';
 
+const CurrencyContext = React.createContext();
+const useCurrency = () => React.useContext(CurrencyContext);
+
 // Brand data with the exact custom metallic logo images provided
 const BRANDS = [
   { name: 'GUCCI', folder: 'GUCCI_!', count: 20, logo: '/brands/gucci.webp' },
@@ -192,6 +195,7 @@ const Header = ({ cart, setCartOpen, searchOpen, setSearchOpen, onNavigate, curr
 };
 
 const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantity }) => {
+  const { currency, formatPrice, convertPrice } = useCurrency();
   const [checkoutStep, setCheckoutStep] = useState('cart'); // 'cart' or 'details'
   const [email, setEmail] = useState('');
   const [emailOffers, setEmailOffers] = useState(true);
@@ -209,9 +213,9 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const [billingSame, setBillingSame] = useState(true);
 
-  const subtotal = cart.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0);
-  const shippingCost = shippingMethod === 'standard' ? 100.00 : 0.00;
-  const grandTotal = subtotal + shippingCost;
+  const subtotalLE = cart.reduce((acc, item) => acc + parseFloat(item.price) * item.quantity, 0);
+  const shippingLE = shippingMethod === 'standard' ? 100.00 : 0.00;
+  const grandTotalLE = subtotalLE + shippingLE;
 
   const handleCheckoutSubmit = (e) => {
     e.preventDefault();
@@ -221,7 +225,7 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
     }
 
     // Send order details via WhatsApp to the owner (201130503073)
-    const itemsList = cart.map(i => `- ${i.title} (x${i.quantity}) - ${i.currency} ${i.price}`).join('\n');
+    const itemsList = cart.map(i => `- ${i.title} (x${i.quantity}) - ${formatPrice(i.price)}`).join('\n');
     const msg = encodeURIComponent(
       `🛍️ NEW MAISON SIGNATURE ORDER!\n\n` +
       `👤 Customer: ${firstName} ${lastName}\n` +
@@ -229,10 +233,10 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
       `📧 Email: ${email || 'N/A'}\n` +
       `📍 Address: ${address}${apartment ? `, ${apartment}` : ''}\n` +
       `🏙️ City / Governorate: ${city || ''} ${governorate}\n` +
-      `📦 Shipping: ${shippingMethod === 'standard' ? 'Standard (100 LE)' : 'Free'}\n` +
+      `📦 Shipping: ${shippingMethod === 'standard' ? `Standard (${formatPrice(100)})` : 'Free'}\n` +
       `💳 Payment: ${paymentMethod === 'cod' ? 'Cash on Delivery (COD)' : 'Online Payment'}\n\n` +
       `🛒 ITEMS:\n${itemsList}\n\n` +
-      `💰 Grand Total: LE ${grandTotal.toFixed(2)}`
+      `💰 Grand Total: ${formatPrice(grandTotalLE)}`
     );
     window.open(`https://wa.me/201130503073?text=${msg}`, '_blank');
 
@@ -312,7 +316,7 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
                         />
                         <div className="flex-1">
                           <h4 className="text-sm text-white font-medium">{item.title}</h4>
-                          <p className="text-xs text-[#C5A880] mt-1">{item.currency} {item.price}</p>
+                          <p className="text-xs text-[#C5A880] mt-1">{formatPrice(item.price)}</p>
                           <div className="flex items-center gap-3 mt-2">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -344,7 +348,7 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
                   <div className="pt-6 border-t border-white/10">
                     <div className="flex justify-between text-white mb-4">
                       <span className="text-sm tracking-wider">Subtotal</span>
-                      <span className="text-lg font-light text-[#C5A880]">LE {subtotal.toFixed(2)}</span>
+                      <span className="text-lg font-light text-[#C5A880]">{formatPrice(subtotalLE)}</span>
                     </div>
                     <button
                       onClick={() => setCheckoutStep('details')}
@@ -571,15 +575,15 @@ const CartDrawer = ({ cartOpen, setCartOpen, cart, removeFromCart, updateQuantit
                 <div className="pt-4 border-t border-white/10 space-y-3">
                   <div className="flex justify-between text-white/70">
                     <span>Subtotal</span>
-                    <span>LE {subtotal.toFixed(2)}</span>
+                    <span>{formatPrice(subtotalLE)}</span>
                   </div>
                   <div className="flex justify-between text-white/70">
                     <span>Shipping</span>
-                    <span>LE {shippingCost.toFixed(2)}</span>
+                    <span>{shippingLE === 0 ? 'Free' : formatPrice(shippingLE)}</span>
                   </div>
                   <div className="flex justify-between text-white text-sm font-semibold pt-2 border-t border-white/10">
                     <span>Total</span>
-                    <span className="text-[#C5A880]">LE {grandTotal.toFixed(2)}</span>
+                    <span className="text-[#C5A880]">{formatPrice(grandTotalLE)}</span>
                   </div>
 
                   <button
@@ -751,6 +755,7 @@ const BrandFilterSection = ({ selectedBrand, onBrandSelect }) => {
 };
 
 const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
+  const { currency, formatPrice, convertPrice } = useCurrency();
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -909,9 +914,9 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
               </h2>
 
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-xl text-[#C5A880] font-semibold">{product.currency} {unitPrice.toFixed(2)}</span>
+                <span className="text-xl text-[#C5A880] font-semibold">{formatPrice(unitPrice)}</span>
                 {product.originalPrice && (
-                  <span className="text-white/40 text-sm line-through">{product.currency} {product.originalPrice}</span>
+                  <span className="text-white/40 text-sm line-through">{formatPrice(product.originalPrice)}</span>
                 )}
               </div>
 
@@ -943,7 +948,7 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
                         : 'border-white/10 bg-white/5 text-white/70 hover:border-white/30'
                     }`}
                   >
-                    <span>With Gift Box (LE {boxPriceVal.toFixed(2)})</span>
+                    <span>With Gift Box ({formatPrice(boxPriceVal)})</span>
                   </button>
                 </div>
               </div>
@@ -995,7 +1000,7 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
                   onClick={handleAddToCart}
                   className="flex-1 py-4 bg-[#C5A880] text-black font-semibold tracking-[0.2em] uppercase text-xs hover:bg-[#b3976f] transition shadow-xl rounded"
                 >
-                  Add to Secure Cart — {product.currency} {(unitPrice * quantity).toFixed(2)}
+                  Add to Secure Cart — {formatPrice(unitPrice * quantity)}
                 </button>
               </div>
             </div>
@@ -1007,6 +1012,7 @@ const ProductQuickView = ({ product, isOpen, onClose, addToCart }) => {
 };
 
 const ProductItem = ({ product, addToCart, onQuickView, index }) => {
+  const { formatPrice } = useCurrency();
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
@@ -1173,9 +1179,9 @@ const ProductItem = ({ product, addToCart, onQuickView, index }) => {
       )}
 
       <div className="flex gap-3 items-center mt-2">
-        <span className="text-white font-medium text-sm">{product.currency} {product.price}</span>
+        <span className="text-white font-medium text-sm">{formatPrice(product.price)}</span>
         {product.originalPrice && (
-          <span className="text-white/40 text-xs line-through">{product.currency} {product.originalPrice}</span>
+          <span className="text-white/40 text-xs line-through">{formatPrice(product.originalPrice)}</span>
         )}
       </div>
     </div>
@@ -1351,6 +1357,7 @@ const ShopByCollection = ({ selectedBrand, addToCart, onQuickView }) => {
 
 // Find Your Perfect Tie Component with 1 Button and Modal for exact 16 ties from C:\Users\Elmasrypc\Desktop\matching\matching ties
 const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
+  const { formatPrice } = useCurrency();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTieIndex, setSelectedTieIndex] = useState(0);
   const [activeMatchingIndex, setActiveMatchingIndex] = useState(0);
@@ -1676,7 +1683,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
               </h3>
             </div>
             <div className="flex justify-between items-center mt-6 pt-6 border-t border-white/10">
-              <span className="text-[#C5A880] font-light text-lg tracking-wider">{currentTie.currency} {currentTie.price}</span>
+              <span className="text-[#C5A880] font-light text-lg tracking-wider">{formatPrice(currentTie.price)}</span>
               <button
                 onClick={() => addToCart({
                   id: 'MATCH-TIE-' + selectedTieIndex,
@@ -1756,7 +1763,7 @@ const FindYourPerfectTie = ({ addToCart, onQuickView }) => {
                   <h4 className="text-xs text-white font-light tracking-wide truncate group-hover:text-[#C5A880] transition-colors">{tie.name}</h4>
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5">
                     <span className="text-[10px] text-[#C5A880] tracking-wider uppercase font-medium">Select Tie</span>
-                    <span className="text-[11px] text-white font-semibold">{tie.currency} {tie.price}</span>
+                    <span className="text-[11px] text-white font-semibold">{formatPrice(tie.price)}</span>
                   </div>
                 </div>
               ))}
@@ -2062,6 +2069,7 @@ const ContactModal = ({ isOpen, onClose }) => {
 };
 
 const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
+  const { formatPrice } = useCurrency();
   const [productsByBrand, setProductsByBrand] = useState({});
   const [loading, setLoading] = useState(true);
   const [activeBrandFilter, setActiveBrandFilter] = useState('ALL');
@@ -2189,7 +2197,7 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
                               </h5>
                               <div className="flex items-center justify-between pt-2 border-t border-white/5">
                                 <span className="text-[10px] text-[#C5A880] tracking-wider uppercase">Quick View</span>
-                                <span className="text-xs text-white font-semibold">{product.currency || 'LE'} {product.price}</span>
+                                <span className="text-xs text-white font-semibold">{formatPrice(product.price)}</span>
                               </div>
                             </div>
                           );
@@ -2207,6 +2215,7 @@ const AllProductsModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
 };
 
 const SearchModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
+  const { formatPrice } = useCurrency();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -2283,7 +2292,7 @@ const SearchModal = ({ isOpen, onClose, addToCart, onQuickView }) => {
                     <h4 className="text-white text-sm font-light group-hover:text-[#C5A880] transition">{product.title}</h4>
                   </div>
                 </div>
-                <span className="text-[#C5A880] text-sm font-medium">{product.currency || 'LE'} {product.price}</span>
+                <span className="text-[#C5A880] text-sm font-medium">{formatPrice(product.price)}</span>
               </div>
             ))}
             {query && results.length === 0 && !loading && (
@@ -2692,6 +2701,48 @@ export default function SignatureLanding() {
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [aiConciergeOpen, setAiConciergeOpen] = useState(false);
   const [currency, setCurrency] = useState('LE');
+  const [exchangeRates, setExchangeRates] = useState({
+    LE: 1,
+    USD: 0.020,
+    EUR: 0.019,
+    SAR: 0.075,
+    AED: 0.073
+  });
+
+  useEffect(() => {
+    fetch('https://open.er-api.com/v6/latest/EGP')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.rates) {
+          setExchangeRates({
+            LE: 1,
+            USD: data.rates.USD || 0.020,
+            EUR: data.rates.EUR || 0.019,
+            SAR: data.rates.SAR || 0.075,
+            AED: data.rates.AED || 0.073
+          });
+        }
+      })
+      .catch((err) => {
+        console.log('Exchange rate API fallback active:', err);
+      });
+  }, []);
+
+  const convertPrice = (priceInLE) => {
+    const num = parseFloat(priceInLE) || 0;
+    const rate = exchangeRates[currency] || 1;
+    return num * rate;
+  };
+
+  const formatPrice = (priceInLE) => {
+    const converted = convertPrice(priceInLE);
+    if (currency === 'LE') return `LE ${converted.toFixed(2)}`;
+    if (currency === 'USD') return `$${converted.toFixed(2)}`;
+    if (currency === 'EUR') return `€${converted.toFixed(2)}`;
+    if (currency === 'SAR') return `${converted.toFixed(2)} SAR`;
+    if (currency === 'AED') return `${converted.toFixed(2)} AED`;
+    return `LE ${converted.toFixed(2)}`;
+  };
 
   const handleNavigate = (item) => {
     if (item === 'Home') {
@@ -2744,8 +2795,9 @@ export default function SignatureLanding() {
   };
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white selection:bg-[#C5A880] selection:text-black font-sans">
-      <AnnouncementBar />
+    <CurrencyContext.Provider value={{ currency, setCurrency, formatPrice, convertPrice, exchangeRates }}>
+      <div className="bg-[#050505] min-h-screen text-white selection:bg-[#C5A880] selection:text-black font-sans">
+        <AnnouncementBar />
       <Header cart={cart} setCartOpen={setCartOpen} searchOpen={searchOpen} setSearchOpen={setSearchOpen} onNavigate={handleNavigate} currency={currency} setCurrency={setCurrency} />
       <HeroSection
         onShopClick={() => document.getElementById('brands')?.scrollIntoView({ behavior: 'smooth' })}
@@ -2809,6 +2861,7 @@ export default function SignatureLanding() {
         addToCart={addToCart}
       />
       <FloatingContactWidget />
-    </div>
+      </div>
+    </CurrencyContext.Provider>
   );
 }
