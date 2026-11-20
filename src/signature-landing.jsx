@@ -2770,7 +2770,6 @@ export default function SignatureLanding() {
       <ShopByCollection selectedBrand={selectedBrand} addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <FindYourPerfectTie addToCart={addToCart} onQuickView={setQuickViewProduct} />
       <PressSection />
-      <VipTestimonialsSection />
       <FaqSection />
       <Footer onOpenPrivacy={() => setPrivacyOpen(true)} onOpenTerms={() => setTermsOpen(true)} onOpenCaseStudies={() => setCaseStudiesOpen(true)} />
       <CookieConsentBanner onAccept={() => {
