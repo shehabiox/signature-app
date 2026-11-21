@@ -2656,7 +2656,7 @@ const Footer = ({ onOpenPrivacy, onOpenTerms, onOpenCaseStudies }) => {
           <div>
             <h3 className="text-white text-xs uppercase tracking-[0.25em] mb-6 font-medium">SUPPORT</h3>
             <ul className="space-y-3 text-xs tracking-wider">
-              <li><a href="#contact" className="hover:text-[#C5A880] transition">Contact Concierge</a></li>
+              <li><a href="https://www.facebook.com/people/Signature-Elite/61591325961585/" target="_blank" rel="noreferrer" className="hover:text-[#C5A880] transition">Contact Concierge</a></li>
               <li><a href="#shipping" className="hover:text-[#C5A880] transition">Shipping & Delivery</a></li>
               <li><a href="#returns" className="hover:text-[#C5A880] transition">Returns & Exchanges</a></li>
               <li><button onClick={onOpenTerms} className="hover:text-[#C5A880] transition text-left">Terms of Service</button></li>
@@ -2775,7 +2775,7 @@ export default function SignatureLanding() {
     } else if (item === 'The Journal') {
       setJournalOpen(true);
     } else if (item === 'Contact') {
-      setContactOpen(true);
+      window.open('https://www.facebook.com/people/Signature-Elite/61591325961585/', '_blank');
     } else if (item === 'The Signature World') {
       document.getElementById('craftsmanship')?.scrollIntoView({ behavior: 'smooth' });
     }
